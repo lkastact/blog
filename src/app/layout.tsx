@@ -12,13 +12,27 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: SITE.title, template: "%s — Blog Tour" },
   description: SITE.description,
-  openGraph: { type: "website", locale: "pt_BR", siteName: SITE.name, title: SITE.title, description: SITE.description, images: ["/imagens/ceu-aviao.svg"] },
+  applicationName: SITE.name,
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: SITE.name,
+    title: SITE.title,
+    description: SITE.description,
+    images: [SITE.ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.title,
+    description: SITE.description,
+    images: [SITE.ogImage.url],
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e2233" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1a3d" },
   ],
 };
 

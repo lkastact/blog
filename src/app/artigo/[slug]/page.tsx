@@ -6,6 +6,7 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { Icon } from "@/components/Icon";
 import { Markdown } from "@/components/Markdown";
 import { getAllArticles, getArticle, getRelated, toSummary } from "@/lib/articles";
+import { SITE } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -19,7 +20,18 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: a.title,
     description: a.excerpt,
-    openGraph: { type: "article", title: a.title, description: a.excerpt, publishedTime: a.isoDate, images: a.image ? [a.image] : undefined },
+    alternates: { canonical: `/artigo/${a.slug}` },
+    openGraph: {
+      type: "article",
+      locale: "pt_BR",
+      url: `/artigo/${a.slug}`,
+      siteName: SITE.name,
+      title: a.title,
+      description: a.excerpt,
+      publishedTime: a.isoDate,
+      images: [SITE.ogImage],
+    },
+    twitter: { card: "summary_large_image", title: a.title, description: a.excerpt, images: [SITE.ogImage.url] },
   };
 }
 

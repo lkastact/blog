@@ -9,8 +9,13 @@ export const SITE = {
   title: "Tour — Blog de viagens, destinos e dicas",
   description:
     "Dicas de viagem, roteiros e inspiração para viajar de avião e de ônibus com tranquilidade.",
-  // Troque pelo domínio real ao publicar (usado no sitemap e nas meta tags).
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  // Endereço público do site, usado no sitemap e nas meta tags (prévia do WhatsApp, redes sociais).
+  // Ordem: NEXT_PUBLIC_SITE_URL (seu domínio) → domínio de produção da Vercel → localhost.
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000"),
+  /** Imagem de compartilhamento (PNG 1200×630). WhatsApp não aceita SVG. */
+  ogImage: { url: "/og-image.png", width: 1200, height: 630, alt: "Tour — logo" },
   about:
     "A Tour ajuda você a planejar viagens de avião e de ônibus com tranquilidade — do primeiro roteiro ao retorno para casa.",
 };

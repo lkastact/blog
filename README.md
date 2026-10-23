@@ -47,7 +47,8 @@ src/lib/articles.ts     Leitura dos arquivos Markdown
 ## Personalizar
 
 - **Contato e redes sociais:** preencha `CONTACT` e `SOCIAL` em `src/lib/site.ts`. Campos vazios aparecem como placeholders no rodapé.
-- **Domínio:** crie um arquivo `.env.local` com `NEXT_PUBLIC_SITE_URL=https://seudominio.com.br` (usado no sitemap e nas meta tags).
+- **Domínio:** crie um arquivo `.env.local` com `NEXT_PUBLIC_SITE_URL=https://seudominio.com.br` (usado no sitemap e nas meta tags). Na Vercel, sem essa variável, o site usa automaticamente o domínio de produção do projeto.
+- **Prévia de link (WhatsApp, Instagram, Facebook, X):** a imagem é `public/og-image.png` (1200×630, PNG, com o logo). Para trocar, substitua o arquivo mantendo o tamanho. O WhatsApp guarda a prévia em cache, então uma mudança pode demorar a aparecer em links já enviados.
 - **Cores:** edite as variáveis no topo de `src/app/globals.css`. Elas viram classes do Tailwind (`bg-sky`, `text-ink`, `bg-surface-sky`…). O tema escuro segue o sistema do visitante.
 - **Imagens:** substitua os arquivos em `public/imagens/` por fotografias (JPG/WebP) e atualize os caminhos.
 - **Newsletter:** hoje é demonstrativa (valida o e-mail, mas não envia). Para integrar, passe `onSubscribe` e `demo={false}` ao componente `Newsletter`.
