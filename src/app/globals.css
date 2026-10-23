@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Tour — tokens de design (manual de marca)
+   Paleta oficial: azul-escuro #142c63 (logo, confiança),
+   verde-azulado #1cabb0 (destaque) e azul-claro #caf5f7 (leveza).
+   Branco e cinza suave completam os fundos.
+---------------------------------------------------------------- */
+:root {
+  --surface: #ffffff;
+  --surface-sky: #ecfbfc;
+  --surface-muted: #f3f6f8;
+  --mist: #caf5f7;
+  --line: #d6e4ec;
+  --line-strong: #6f7f99;
+  --ink: #142c63;
+  --ink-body: #3b4b6b;
+  --ink-muted: #5a6782;
+  --sky: #1cabb0;
+  --on-sky: #142c63;
+  --accent: #0a7276;
+  --primary: #142c63;
+  --on-primary: #ffffff;
+  --navy: #142c63;
+  --on-navy: #ffffff;
+  --on-navy-muted: #caf5f7;
+  --focus: #0a7276;
+  --success: #1e7a4f;
+  --danger: #b3261e;
+  --scrim: rgba(11, 26, 61, 0.66);
+  --shadow-sm: 0 1px 2px rgba(20, 44, 99, 0.06), 0 2px 8px rgba(20, 44, 99, 0.05);
+  --shadow-md: 0 10px 30px rgba(20, 44, 99, 0.12);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #0b1a3d;
+    --surface-sky: #12245a;
+    --surface-muted: #0f2049;
+    --mist: #12245a;
+    --line: #233a6e;
+    --line-strong: #6d7da3;
+    --ink: #eaf6fc;
+    --ink-body: #c4cce0;
+    --ink-muted: #97a3bf;
+    --sky: #1cabb0;
+    --on-sky: #0b1a3d;
+    --accent: #5ed6da;
+    --primary: #1cabb0;
+    --on-primary: #0b1a3d;
+    --navy: #081330;
+    --on-navy: #eaf6fc;
+    --on-navy-muted: #caf5f7;
+    --focus: #5ed6da;
+    --success: #6fd3a0;
+    --danger: #ff9a8f;
+    --scrim: rgba(5, 12, 30, 0.72);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+    color-scheme: dark;
+  }
+}
+
+/* Expõe os tokens como utilitários do Tailwind: bg-surface, text-ink, bg-sky, rounded-card… */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-sky: var(--surface-sky);
+  --color-surface-muted: var(--surface-muted);
+  --color-mist: var(--mist);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-body: var(--ink-body);
+  --color-ink-muted: var(--ink-muted);
+  --color-sky: var(--sky);
+  --color-on-sky: var(--on-sky);
+  --color-accent: var(--accent);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-navy: var(--navy);
+  --color-on-navy: var(--on-navy);
+  --color-on-navy-muted: var(--on-navy-muted);
+  --color-focus: var(--focus);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-scrim: var(--scrim);
+
+  --font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-manrope), "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --radius-chip: 8px;
+  --radius-card: 14px;
+  --radius-panel: 24px;
+
+  --shadow-soft: var(--shadow-sm);
+  --shadow-lift: var(--shadow-md);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+  }
+  body {
+    @apply bg-surface text-ink-body font-sans antialiased;
+    font-size: 16px;
+    line-height: 26px;
+  }
+  h1, h2, h3 {
+    @apply font-display text-ink font-semibold;
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+@utility container-rt {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 3rem;
+  }
+}
+
+@utility eyebrow {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Tipografia de leitura dos artigos (Markdown) */
+@layer components {
+  .prose-rt {
+    max-width: 68ch;
+    margin-inline: auto;
+    font-size: 18px;
+    line-height: 30px;
+    color: var(--ink-body);
+  }
+  .prose-rt > * + * { margin-top: 1.5rem; }
+  .prose-rt h2 { font-size: 28px; line-height: 34px; margin-top: 3rem; }
+  .prose-rt h3 { font-size: 22px; line-height: 28px; margin-top: 2rem; }
+  .prose-rt ul { list-style: disc; padding-left: 1.3em; }
+  .prose-rt ol { list-style: decimal; padding-left: 1.3em; }
+  .prose-rt li + li { margin-top: 0.5rem; }
+  .prose-rt li::marker { color: var(--accent); }
+  .prose-rt strong { color: var(--ink); }
+  .prose-rt a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose-rt blockquote {
+    padding: 1.5rem;
+    border-radius: var(--radius-card);
+    background: var(--surface-sky);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 21px;
+    line-height: 30px;
+  }
+  .prose-rt figure img { border-radius: var(--radius-card); width: 100%; height: auto; }
+  .prose-rt figcaption { margin-top: 0.5rem; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+  .prose-rt code { font-size: 0.9em; background: var(--surface-muted); padding: 2px 6px; border-radius: 6px; }
+  .prose-rt hr { border: 0; border-top: 1px solid var(--line); }
+  @media (width < 40rem) {
+    .prose-rt { font-size: 17px; line-height: 28px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
