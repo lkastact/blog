@@ -39,4 +39,4 @@ Some transporte, hospedagem, alimentação, passeios e deslocamentos locais. Dep
 
 ## Conclusão
 
-Com objetivo claro, datas bem escolhidas e um orçamento realista, metade da viagem já está pronta. O próximo passo é [montar o roteiro](/artigo/como-montar-um-roteiro-de-viagem-perfeito) — e a Tour está aqui para ajudar em cada etapa.
+Com objetivo claro, datas bem escolhidas e um orçamento realista, metade da viagem já está pronta. O próximo passo é [montar o roteiro](/artigo/como-montar-um-roteiro-de-viagem-perfeito) — e a Rota Tour está aqui para ajudar em cada etapa.

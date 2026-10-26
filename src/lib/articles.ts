@@ -29,7 +29,7 @@ function toIso(d: string): string {
   return m ? `${m[3]}-${m[2]}-${m[1]}` : "";
 }
 
-/** Lê um artigo no modelo Markdown da Tour (ver README). */
+/** Lê um artigo no modelo Markdown da Rota Tour (ver README). */
 export function parseArticle(md: string, slug: string): Article {
   const a: Article = {
     slug, title: "", category: "", categorySlug: "", date: "", isoDate: "", readTime: "",

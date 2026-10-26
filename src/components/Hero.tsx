@@ -7,7 +7,7 @@ export function Hero({
   image,
   imageAlt,
   title = "Sua próxima viagem começa aqui.",
-  subtitle = "Descubra destinos, encontre inspiração e prepare-se para viver experiências inesquecíveis com a Tour.",
+  subtitle = "Descubra destinos, encontre inspiração e prepare-se para viver experiências inesquecíveis com a Rota Tour.",
 }: Props) {
   return (
     <section aria-labelledby="hero-titulo" className="pt-3 sm:pt-4">

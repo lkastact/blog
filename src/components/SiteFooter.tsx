@@ -44,7 +44,7 @@ export function SiteFooter() {
       <div className="container-rt">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-12">
           <div id="sobre">
-            <Brand variant="dark-bg" height={56} />
+            <Brand variant="dark-bg" height={64} />
             <p className="mt-4 max-w-[340px]">{SITE.about}</p>
             <p className="mt-6 text-sm">
               <span className="sr-only">Redes sociais: </span>
@@ -88,7 +88,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-wrap justify-between gap-3 border-t border-on-navy-muted/25 pt-6 text-sm">
-          <p>© {new Date().getFullYear()} Tour. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} Rota Tour. Todos os direitos reservados.</p>
           <ul className="flex gap-6">
             <li><Link href="/privacidade" className={link}>Política de privacidade</Link></li>
             <li><Link href="/termos" className={link}>Termos de uso</Link></li>

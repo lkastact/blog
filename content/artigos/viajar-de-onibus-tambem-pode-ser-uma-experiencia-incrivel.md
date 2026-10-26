@@ -36,4 +36,4 @@ As paradas são uma boa hora para esticar as pernas, se hidratar e conhecer sabo
 
 ## Conclusão
 
-Viajar de ônibus é econômico, prático e cheio de paisagens. Que tal usar a estrada para uma [escapada de fim de semana](/artigos/tema/escapadas-de-fim-de-semana)? Explore outros roteiros no blog da Tour.
+Viajar de ônibus é econômico, prático e cheio de paisagens. Que tal usar a estrada para uma [escapada de fim de semana](/artigos/tema/escapadas-de-fim-de-semana)? Explore outros roteiros no blog da Rota Tour.

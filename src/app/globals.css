@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------
-   Tour — tokens de design (manual de marca)
-   Paleta oficial: azul-escuro #142c63 (logo, confiança),
+   Rota Tour — tokens de design (manual de marca)
+   Paleta oficial: azul-escuro #0b2975 (cor do logo, confiança),
    verde-azulado #1cabb0 (destaque) e azul-claro #caf5f7 (leveza).
    Branco e cinza suave completam os fundos.
 ---------------------------------------------------------------- */
@@ -13,23 +13,23 @@
   --mist: #caf5f7;
   --line: #d6e4ec;
   --line-strong: #6f7f99;
-  --ink: #142c63;
+  --ink: #0b2975;
   --ink-body: #3b4b6b;
   --ink-muted: #5a6782;
   --sky: #1cabb0;
-  --on-sky: #142c63;
+  --on-sky: #0b2975;
   --accent: #0a7276;
-  --primary: #142c63;
+  --primary: #0b2975;
   --on-primary: #ffffff;
-  --navy: #142c63;
+  --navy: #0b2975;
   --on-navy: #ffffff;
   --on-navy-muted: #caf5f7;
   --focus: #0a7276;
   --success: #1e7a4f;
   --danger: #b3261e;
   --scrim: rgba(11, 26, 61, 0.66);
-  --shadow-sm: 0 1px 2px rgba(20, 44, 99, 0.06), 0 2px 8px rgba(20, 44, 99, 0.05);
-  --shadow-md: 0 10px 30px rgba(20, 44, 99, 0.12);
+  --shadow-sm: 0 1px 2px rgba(11, 41, 117, 0.06), 0 2px 8px rgba(11, 41, 117, 0.05);
+  --shadow-md: 0 10px 30px rgba(11, 41, 117, 0.12);
   color-scheme: light;
 }
 

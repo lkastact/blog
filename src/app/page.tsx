@@ -47,7 +47,7 @@ export default function HomePage() {
               Cada caminho leva a uma nova experiência.
             </h2>
             <p>
-              Seja cruzando o céu, descobrindo novas paisagens pela estrada ou planejando o próximo destino, a Tour ajuda você a transformar planos em
+              Seja cruzando o céu, descobrindo novas paisagens pela estrada ou planejando o próximo destino, a Rota Tour ajuda você a transformar planos em
               experiências.
             </p>
           </div>

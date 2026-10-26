@@ -1,6 +1,6 @@
-# Blog Tour
+# Blog Rota Tour
 
-Blog da agência de viagens **Tour**, feito com **Next.js (App Router)**, **React** e **Tailwind CSS v4**.
+Blog da agência de viagens **Rota Tour**, feito com **Next.js (App Router)**, **React** e **Tailwind CSS v4**.
 
 ## Como rodar
 
@@ -22,9 +22,9 @@ npm start
 
 ## Marca
 
-- **Logo oficial:** `public/logo/logo-tour.png` (azul-escuro, para fundos claros) e `public/logo/logo-tour-claro.png` (azul-claro da paleta, para o rodapé e o modo escuro). Ele é usado pelo componente `src/components/Brand.tsx`.
-- **Regras do manual:** não alterar a cor (use só as cores da paleta), não cortar, não rotacionar, não colocar sobre ilustrações e não aplicar sombras, efeitos ou opacidade.
-- **Paleta:** azul-escuro `#142c63`, verde-azulado `#1cabb0` e azul-claro `#caf5f7`. Os tons usados em cada contexto estão em `src/app/globals.css`.
+- **Logo oficial:** `public/logo/logo-rota-tour.png` (cores originais, para fundos claros) e `public/logo/logo-rota-tour-claro.png` (azul-claro da paleta, para o rodapé e o modo escuro). Ele é usado pelo componente `src/components/Brand.tsx`.
+- **Regras do manual:** não alterar a cor (use só as cores da paleta), não cortar, não rotacionar, não remover elementos nem a escrita "ROTA", não colocar sobre ilustrações e não aplicar sombras, efeitos ou opacidade.
+- **Paleta:** azul-escuro `#0b2975` (a cor do logo; o manual cita `#142c63`), verde-azulado `#1cabb0` e azul-claro `#caf5f7`. Os tons usados em cada contexto estão em `src/app/globals.css`.
 
 ## Estrutura
 

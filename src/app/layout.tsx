@@ -10,7 +10,7 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", displa
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: SITE.title, template: "%s — Blog Tour" },
+  title: { default: SITE.title, template: "%s — Blog Rota Tour" },
   description: SITE.description,
   applicationName: SITE.name,
   openGraph: {
