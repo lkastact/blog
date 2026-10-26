@@ -21,17 +21,14 @@ export const SITE = {
 };
 
 export const CONTACT = {
-  phone: "", // ex.: "(00) 00000-0000"
-  email: "", // ex.: "contato@seudominio.com.br"
-  address: "",
-  hours: "",
+  phone: "(11) 90000-9008",
+  email: "rotatour@gmail.com",
+  address: "Rua Jundiaí, 123",
+  hours: "9h às 18h, de segunda a sexta",
 };
 
-export const SOCIAL: { label: string; href: string }[] = [
-  { label: "Instagram", href: "" },
-  { label: "Facebook", href: "" },
-  { label: "YouTube", href: "" },
-];
+/** Nome nas redes sociais. Exibido só como texto (ainda não há perfis para linkar). */
+export const SOCIAL_HANDLE = "@rota.tour";
 
 export const NAV = [
   { id: "inicio", label: "Início", href: "/" },
@@ -54,11 +51,11 @@ export const CATEGORIES: Category[] = [
 export type Destination = { slug: string; title: string; text: string; image: string; imageAlt: string };
 
 export const DESTINATIONS: Destination[] = [
-  { slug: "praias-e-natureza", title: "Praias e natureza", text: "Mar calmo, trilhas e paisagens para recarregar.", image: "/imagens/praia.svg", imageAlt: "Praia tranquila com mar calmo e coqueiro" },
-  { slug: "cidades-e-cultura", title: "Cidades e cultura", text: "Museus, arquitetura e sabores locais.", image: "/imagens/cidade.svg", imageAlt: "Silhueta de cidade histórica ao entardecer" },
-  { slug: "viagens-em-familia", title: "Viagens em família", text: "Roteiros pensados para todas as idades.", image: "/imagens/campo-chale.svg", imageAlt: "Chalé no campo cercado de árvores" },
-  { slug: "escapadas-de-fim-de-semana", title: "Escapadas de fim de semana", text: "Destinos perto para aproveitar em poucos dias.", image: "/imagens/estrada-onibus.svg", imageAlt: "Ônibus de turismo em estrada panorâmica" },
-  { slug: "destinos-para-descansar", title: "Destinos para descansar", text: "Natureza, silêncio e tempo livre.", image: "/imagens/montanha-lago.svg", imageAlt: "Montanhas refletidas em um lago sereno" },
+  { slug: "praias-e-natureza", title: "Praias e natureza", text: "Mar calmo, trilhas e paisagens para recarregar.", image: "/imagens/destino-praias-rio.jpg", imageAlt: "Cristo Redentor com vista para a baía e as praias do Rio de Janeiro" },
+  { slug: "cidades-e-cultura", title: "Cidades e cultura", text: "Museus, arquitetura e sabores locais.", image: "/imagens/destino-cidades-pisa.jpg", imageAlt: "Torre inclinada e catedral de Pisa, na Itália" },
+  { slug: "viagens-em-familia", title: "Viagens em família", text: "Roteiros pensados para todas as idades.", image: "/imagens/destino-familia-orlando.jpg", imageAlt: "Castelo de parque temático com estátua em primeiro plano" },
+  { slug: "escapadas-de-fim-de-semana", title: "Escapadas de fim de semana", text: "Destinos perto para aproveitar em poucos dias.", image: "/imagens/destino-escapadas-gramado.jpg", imageAlt: "Vista aérea de Gramado, na Serra Gaúcha, com construção em estilo enxaimel" },
+  { slug: "destinos-para-descansar", title: "Destinos para descansar", text: "Natureza, silêncio e tempo livre.", image: "/imagens/destino-descansar-lago.jpg", imageAlt: "Lago de água azul-turquesa cercado por montanhas e pinheiros" },
 ];
 
 export function slugify(s: string): string {

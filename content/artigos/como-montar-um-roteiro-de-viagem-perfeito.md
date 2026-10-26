@@ -6,7 +6,7 @@
 **Temas:** Cidades e cultura, Viagens em família  
 **Resumo:** Organize seus passeios e aproveite cada momento do destino.
 
-![Silhueta de cidade histórica ao entardecer](/imagens/cidade.svg)
+![Torre Eiffel em Paris sob um céu azul](/imagens/artigo-roteiro-paris.jpg)
 
 Um bom roteiro é como um mapa bem dobrado: mostra o caminho sem esconder as surpresas. O segredo está em equilibrar o que você quer ver com o tempo que realmente tem.
 

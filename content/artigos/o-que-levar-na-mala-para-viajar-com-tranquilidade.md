@@ -6,7 +6,7 @@
 **Temas:** Viagens em família, Praias e natureza  
 **Resumo:** Uma lista prática para não esquecer os itens essenciais.
 
-![Mala de viagem aberta com itens essenciais organizados](/imagens/mala-viagem.svg)
+![Pessoa arrumando uma mala aberta com roupas, chapéu e óculos de sol](/imagens/artigo-mala.jpg)
 
 Fazer a mala pode ser simples quando existe uma lista. Use este checklist como ponto de partida e adapte ao clima, à duração e ao estilo da sua viagem.
 

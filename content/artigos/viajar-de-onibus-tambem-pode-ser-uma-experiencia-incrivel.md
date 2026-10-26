@@ -6,7 +6,7 @@
 **Temas:** Escapadas de fim de semana, Praias e natureza, Viagens em família  
 **Resumo:** Descubra como aproveitar o caminho com conforto e praticidade.
 
-![Ônibus de turismo em uma estrada panorâmica entre colinas](/imagens/estrada-onibus.svg)
+![Ônibus de turismo em estrada litorânea com mar e montanhas ao fundo](/imagens/artigo-onibus.jpg)
 
 Na viagem de ônibus, o caminho também faz parte do passeio. Serras, litoral e pequenas cidades passam pela janela, e você chega ao destino já no clima da viagem. Com algumas escolhas simples, o trajeto fica ainda mais confortável.
 

@@ -6,7 +6,7 @@
 **Temas:** Cidades e cultura  
 **Resumo:** Um guia para se preparar para o embarque com mais tranquilidade.
 
-![Avião cruzando um céu azul com nuvens](/imagens/ceu-aviao.svg)
+![Pessoa com mala no saguão do aeroporto, com um avião decolando ao fundo](/imagens/artigo-aviao.jpg)
 
 Voar é uma das formas mais rápidas de chegar ao destino — e, com um pouco de preparo, também uma das mais tranquilas. Reunimos o essencial para você embarcar sem correria.
 

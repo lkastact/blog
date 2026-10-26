@@ -6,7 +6,7 @@
 **Temas:** Destinos para descansar, Praias e natureza  
 **Resumo:** Inspire-se com lugares que combinam natureza, tranquilidade e belas paisagens.
 
-![Montanhas refletidas em um lago sereno](/imagens/montanha-lago.svg)
+![Igreja branca à beira-mar entre coqueiros](/imagens/artigo-descansar-praia.jpg)
 
 Às vezes, a melhor viagem é aquela em que o relógio importa pouco. Separamos alguns estilos de destino — e exemplos para inspirar — para quem quer desacelerar.
 

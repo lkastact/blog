@@ -6,7 +6,7 @@
 **Temas:** Escapadas de fim de semana, Viagens em família  
 **Resumo:** Dicas práticas para organizar datas, transporte, hospedagem e orçamento.
 
-![Mapa de viagem com rota tracejada e marcadores de destino](/imagens/mapa-rota.svg)
+![Duas pessoas esquiando em uma pista de neve](/imagens/artigo-planejar-esqui.jpg)
 
 Toda viagem começa bem antes do embarque. Quando o planejamento é feito com calma, sobra mais tempo — e energia — para o que importa: aproveitar o destino. A boa notícia é que organizar uma viagem não precisa ser complicado. Basta seguir uma ordem simples.
 

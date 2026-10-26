@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { CATEGORIES, CONTACT, NAV, SITE, SOCIAL } from "@/lib/site";
+import { CATEGORIES, CONTACT, NAV, SITE, SOCIAL_HANDLE } from "@/lib/site";
 import { Brand } from "./Brand";
 import { Icon, type IconName } from "./Icon";
 
@@ -9,10 +9,31 @@ function Placeholder({ children }: { children: string }) {
 }
 
 export function SiteFooter() {
+  const digits = CONTACT.phone.replace(/\D/g, "");
   const contact: { icon: IconName; value: ReactNode }[] = [
-    { icon: "phone", value: CONTACT.phone || <Placeholder>[Telefone / WhatsApp]</Placeholder> },
+    {
+      icon: "phone",
+      value: CONTACT.phone ? (
+        <>
+          <a href={`tel:+55${digits}`}>{CONTACT.phone}</a>
+          {" · "}
+          <a href={`https://wa.me/55${digits}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </>
+      ) : (
+        <Placeholder>[Telefone / WhatsApp]</Placeholder>
+      ),
+    },
     { icon: "mail", value: CONTACT.email ? <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> : <Placeholder>[E-mail de contato]</Placeholder> },
-    { icon: "pin", value: CONTACT.address || <Placeholder>[Endereço da agência]</Placeholder> },
+    {
+      icon: "pin",
+      value: CONTACT.address ? (
+        <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT.address)}`} target="_blank" rel="noopener noreferrer">
+          {CONTACT.address}
+        </a>
+      ) : (
+        <Placeholder>[Endereço da agência]</Placeholder>
+      ),
+    },
     { icon: "clock", value: CONTACT.hours || <Placeholder>[Horário de atendimento]</Placeholder> },
   ];
   const heading = "mb-4 font-sans text-[13px] leading-[18px] font-bold tracking-[0.08em] uppercase !text-on-navy";
@@ -25,21 +46,10 @@ export function SiteFooter() {
           <div id="sobre">
             <Brand variant="dark-bg" height={56} />
             <p className="mt-4 max-w-[340px]">{SITE.about}</p>
-            <ul aria-label="Redes sociais" className="mt-6 flex flex-wrap gap-2">
-              {SOCIAL.map((s) => (
-                <li key={s.label}>
-                  {s.href ? (
-                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="inline-flex h-[34px] items-center gap-1.5 rounded-full border border-on-navy-muted/45 px-3.5 text-sm text-on-navy">
-                      <Icon name="link" size={14} /> {s.label}
-                    </a>
-                  ) : (
-                    <span title="Link a configurar" className="inline-flex h-[34px] items-center rounded-full border border-dashed border-on-navy-muted/45 px-3.5 text-sm">
-                      {s.label} (a configurar)
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <p className="mt-6 text-sm">
+              <span className="sr-only">Redes sociais: </span>
+              <span className="inline-flex h-[34px] items-center rounded-full border border-on-navy-muted/45 px-3.5 text-on-navy">{SOCIAL_HANDLE}</span>
+            </p>
           </div>
 
           <nav aria-labelledby="rodape-nav">
@@ -68,7 +78,7 @@ export function SiteFooter() {
             <h2 className={heading}>Contato</h2>
             <ul className="flex flex-col gap-2">
               {contact.map((c) => (
-                <li key={c.icon} className="flex items-start gap-2">
+                <li key={c.icon} className="flex items-start gap-2 [&_a]:text-on-navy [&_a]:underline-offset-4 [&_a:hover]:underline">
                   <Icon name={c.icon} size={16} className="mt-1 text-sky" />
                   <span>{c.value}</span>
                 </li>

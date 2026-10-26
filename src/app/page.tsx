@@ -14,7 +14,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero image="/imagens/ceu-aviao.svg" imageAlt="Avião cruzando um céu azul com nuvens" />
+      <Hero image="/imagens/hero-montanhas.jpg" imageAlt="Vila com casas de madeira e montanhas cobertas de neve ao fundo" />
 
       <section id="categorias" aria-labelledby="cat-titulo" className="py-12 sm:py-[72px]">
         <div className="container-rt">
@@ -52,9 +52,9 @@ export default function HomePage() {
             </p>
           </div>
           <div className="flex flex-col gap-4">
-            <RouteCard image="/imagens/ceu-aviao.svg" imageAlt="Avião em voo sobre as nuvens" eyebrow="Pelo céu" title="Viagens de avião" text="Mais tempo no destino e menos tempo no caminho. Saiba como embarcar tranquilo." href="/artigos/categoria/viagens-de-aviao" />
-            <RouteCard image="/imagens/estrada-onibus.svg" imageAlt="Ônibus de turismo moderno em estrada entre colinas" eyebrow="Pela estrada" title="Viagens de ônibus" text="Paisagens pela janela, paradas no caminho e conforto do embarque ao desembarque." href="/artigos/categoria/viagens-de-onibus" />
-            <RouteCard image="/imagens/mapa-rota.svg" imageAlt="Mapa com rota tracejada e marcadores de destino" eyebrow="No mapa" title="Roteiros sob medida" text="Organize trajetos, dias e passeios para aproveitar cada momento." href="/artigos/categoria/roteiros-e-destinos" />
+            <RouteCard image="/imagens/artigo-aviao.jpg" imageAlt="Pessoa com mala no aeroporto e avião decolando ao fundo" eyebrow="Pelo céu" title="Viagens de avião" text="Mais tempo no destino e menos tempo no caminho. Saiba como embarcar tranquilo." href="/artigos/categoria/viagens-de-aviao" />
+            <RouteCard image="/imagens/artigo-onibus.jpg" imageAlt="Ônibus de turismo em estrada litorânea" eyebrow="Pela estrada" title="Viagens de ônibus" text="Paisagens pela janela, paradas no caminho e conforto do embarque ao desembarque." href="/artigos/categoria/viagens-de-onibus" />
+            <RouteCard image="/imagens/artigo-roteiro-paris.jpg" imageAlt="Torre Eiffel em Paris sob um céu azul" eyebrow="No mapa" title="Roteiros sob medida" text="Organize trajetos, dias e passeios para aproveitar cada momento." href="/artigos/categoria/roteiros-e-destinos" />
           </div>
         </div>
       </section>
