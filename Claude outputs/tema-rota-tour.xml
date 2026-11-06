@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' lang='pt-BR' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <title><data:view.title.escaped/></title>
+  <b:include data='blog' name='all-head-content'/>
+  <meta content='#ffffff' media='(prefers-color-scheme: light)' name='theme-color'/>
+  <meta content='#0b1a3d' media='(prefers-color-scheme: dark)' name='theme-color'/>
+  <b:if cond='data:view.isHomepage'>
+    <meta content='Dicas de viagem, roteiros e inspiração para viajar de avião e de ônibus com tranquilidade.' name='description'/>
+    <meta content='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/og-image.png' property='og:image'/>
+    <meta content='1200' property='og:image:width'/>
+    <meta content='630' property='og:image:height'/>
+    <meta content='summary_large_image' name='twitter:card'/>
+  </b:if>
+  <link href='https://fonts.googleapis.com' rel='preconnect'/>
+  <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
+  <link href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap' rel='stylesheet'/>
+  <b:skin><![CDATA[
+/* Rota Tour — tema Blogger (mesmo visual do site em Next.js) */
+
+:root{
+  --surface:#ffffff; --surface-sky:#ecfbfc; --surface-muted:#f3f6f8; --mist:#caf5f7;
+  --line:#d6e4ec; --line-strong:#6f7f99;
+  --ink:#0b2975; --ink-body:#3b4b6b; --ink-muted:#5a6782;
+  --sky:#1cabb0; --on-sky:#0b2975; --accent-text:#0a7276; --link:#0a7276;
+  --primary:#0b2975; --on-primary:#ffffff;
+  --navy:#0b2975; --on-navy:#ffffff; --on-navy-muted:#caf5f7;
+  --focus:#0a7276; --success:#1e7a4f; --danger:#b3261e;
+  --scrim:rgba(11,26,61,.66);
+  --shadow-sm:0 1px 2px rgba(11,41,117,.06),0 2px 8px rgba(11,41,117,.05);
+  --shadow-md:0 10px 30px rgba(11,41,117,.12);
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px; --space-6:32px; --space-7:48px; --space-8:72px; --space-9:112px;
+  --radius-sm:8px; --radius-md:14px; --radius-lg:24px; --radius-pill:999px;
+  --font-display:Fraunces,"Iowan Old Style",Georgia,serif;
+  --font-sans:Manrope,"Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --surface:#0b1a3d; --surface-sky:#12245a; --surface-muted:#0f2049; --mist:#12245a;
+    --line:#233a6e; --line-strong:#6d7da3;
+    --ink:#eaf6fc; --ink-body:#c4cce0; --ink-muted:#97a3bf;
+    --on-sky:#0b1a3d; --accent-text:#5ed6da; --link:#5ed6da;
+    --primary:#1cabb0; --on-primary:#0b1a3d;
+    --navy:#081330; --on-navy:#eaf6fc; --focus:#5ed6da;
+    --success:#6fd3a0; --danger:#ff9a8f; --scrim:rgba(5,12,30,.72);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3); --shadow-md:0 10px 30px rgba(0,0,0,.45);
+    color-scheme:dark;
+  }
+}
+html{scroll-behavior:smooth}
+body{background:var(--surface)}
+
+/* Rota Tour — component styles. Every value comes from tokens.css (var(--…)). */
+body { margin: 0; }
+.rt, .rt * { box-sizing: border-box; }
+.rt { font-family: var(--font-sans); font-size: 16px; line-height: 26px; color: var(--ink-body); background: var(--surface); -webkit-font-smoothing: antialiased; }
+:where(.rt) h1, :where(.rt) h2, :where(.rt) h3 { font-family: var(--font-display); color: var(--ink); font-weight: 600; margin: 0; }
+:where(.rt) p { margin: 0; }
+:where(.rt) a { color: inherit; }
+:where(.rt) img { max-width: 100%; display: block; }
+.rt :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.rt [id] { scroll-margin-top: 92px; }
+.rt-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.rt-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-7); }
+.rt-icon { flex: none; display: inline-block; vertical-align: middle; }
+.rt-eyebrow { font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
+.rt-skip { position: absolute; left: var(--space-4); top: -60px; z-index: 50; background: var(--primary); color: var(--on-primary); padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); font-weight: 600; text-decoration: none; }
+.rt-skip:focus { top: var(--space-3); }
+
+/* Button */
+.rt-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); height: 44px; padding: 0 22px; border-radius: var(--radius-pill); border: 1.5px solid transparent; font: 600 15px/20px var(--font-sans); text-decoration: none; cursor: pointer; white-space: nowrap; transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease; }
+.rt-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.rt-btn:active { transform: translateY(0); box-shadow: none; }
+.rt-btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+.rt-btn-lg { height: 52px; padding: 0 28px; font-size: 16px; }
+.rt-btn-sm { height: 36px; padding: 0 16px; font-size: 14px; }
+.rt-btn-primary { background: var(--primary); color: var(--on-primary); }
+.rt-btn-primary:hover { filter: brightness(1.12); }
+.rt-btn-sky { background: var(--sky); color: var(--on-sky); }
+.rt-btn-sky:hover { filter: brightness(1.05); }
+.rt-btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.rt-btn-ghost:hover { background: var(--surface-sky); }
+.rt-btn-light { background: rgba(255, 255, 255, .14); color: #ffffff; border-color: rgba(255, 255, 255, .8); }
+.rt-btn-light:hover { background: rgba(255, 255, 255, .24); }
+.rt-btn-link { height: auto; padding: 0; border: 0; background: none; color: var(--accent-text); }
+.rt-btn-link:hover { transform: none; box-shadow: none; text-decoration: underline; text-underline-offset: 4px; }
+.rt-btn-link .rt-icon { transition: transform .18s ease; }
+.rt-btn-link:hover .rt-icon { transform: translateX(3px); }
+
+/* Header */
+.rt-header { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
+.rt-header-bar { display: flex; align-items: center; gap: var(--space-6); height: 76px; }
+.rt-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font: 600 24px/28px var(--font-display); letter-spacing: -.01em; }
+.rt-brand-mark { width: 36px; height: 36px; border-radius: var(--radius-pill); background: var(--sky); color: var(--on-sky); display: inline-flex; align-items: center; justify-content: center; }
+.rt-nav { margin-left: auto; }
+.rt-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--space-5); }
+.rt-nav a { position: relative; display: inline-block; padding: var(--space-2) 0; font: 600 15px/20px var(--font-sans); color: var(--ink); text-decoration: none; }
+.rt-nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px; border-radius: 2px; background: var(--sky); transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
+.rt-nav a:hover::after, .rt-nav a[aria-current="page"]::after { transform: scaleX(1); }
+.rt-menu-btn { display: none; margin-left: auto; width: 44px; height: 44px; border-radius: var(--radius-pill); border: 1.5px solid var(--line-strong); background: var(--surface); color: var(--ink); cursor: pointer; align-items: center; justify-content: center; }
+.rt-mobile { display: none; }
+@media (max-width: 1080px) {
+  .rt-nav, .rt-header-cta { display: none; }
+  .rt-menu-btn { display: inline-flex; }
+  .rt-mobile[data-open="true"] { display: block; border-top: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow-md); }
+  .rt-mobile ul { list-style: none; margin: 0; padding: var(--space-3) 0; }
+  .rt-mobile a.rt-mobile-link { display: block; padding: var(--space-3) 0; font: 600 17px/24px var(--font-sans); color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .rt-mobile .rt-btn { width: 100%; margin: var(--space-4) 0 var(--space-5); }
+}
+
+/* Sections */
+.rt-section { padding: var(--space-8) 0; }
+.rt-section-muted { background: var(--surface-muted); }
+.rt-section-sky { background: var(--surface-sky); }
+.rt-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-5); margin-bottom: var(--space-7); }
+.rt-section-head h2 { font-size: 32px; line-height: 38px; letter-spacing: -.01em; margin-top: var(--space-2); }
+.rt-section-head p { margin-top: var(--space-3); max-width: 560px; }
+
+/* Hero */
+.rt-hero { padding: var(--space-4) 0 0; }
+.rt-hero-frame { position: relative; overflow: hidden; border-radius: var(--radius-lg); min-height: 580px; display: flex; align-items: center; }
+.rt-hero-frame > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.rt-hero-frame::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--scrim) 0%, var(--scrim) 38%, rgba(11, 41, 117, 0) 78%); }
+.rt-hero-copy { position: relative; z-index: 2; max-width: 620px; padding: var(--space-9) var(--space-7); color: #ffffff; }
+.rt-hero-copy h1 { color: #ffffff; font-size: 56px; line-height: 60px; letter-spacing: -.02em; }
+.rt-hero-copy p { margin-top: var(--space-5); font-size: 19px; line-height: 30px; color: #ffffff; max-width: 520px; }
+.rt-hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+
+/* Category card */
+.rt-cat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); }
+.rt-cat { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-5); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.rt-cat:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.rt-cat-icon { width: 52px; height: 52px; border-radius: var(--radius-pill); background: var(--surface-sky); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; margin-bottom: var(--space-2); transition: background-color .2s ease; }
+.rt-cat:hover .rt-cat-icon { background: var(--sky); color: var(--on-sky); }
+.rt-cat h3 { font-size: 22px; line-height: 28px; }
+.rt-cat p { flex: 1; font-size: 15px; line-height: 24px; }
+.rt-cat .rt-btn-link { align-self: flex-start; }
+
+/* Article card */
+.rt-art-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+.rt-art { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.rt-art:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.rt-art-media { aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface-sky); }
+.rt-art-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.rt-art:hover .rt-art-media img { transform: scale(1.04); }
+.rt-art-body { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5); flex: 1; }
+.rt-art h3 { font-size: 21px; line-height: 27px; margin-top: 2px; }
+.rt-art-excerpt { font-size: 15px; line-height: 24px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.rt-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); margin-top: auto; padding-top: var(--space-3); font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink-muted); }
+.rt-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+/* Filters */
+.rt-filters { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-6); }
+.rt-search { position: relative; max-width: 520px; }
+.rt-search .rt-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--ink-muted); pointer-events: none; }
+.rt-input { width: 100%; height: 48px; padding: 0 var(--space-5) 0 48px; border-radius: var(--radius-pill); border: 1.5px solid var(--line-strong); background: var(--surface); color: var(--ink); font: 500 16px/24px var(--font-sans); }
+.rt-input::placeholder { color: var(--ink-muted); }
+.rt-input:focus { outline: 2px solid var(--focus); outline-offset: 2px; }
+.rt-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.rt-chip { height: 36px; padding: 0 16px; border-radius: var(--radius-pill); border: 1.5px solid var(--line-strong); background: var(--surface); color: var(--ink); font: 600 14px/20px var(--font-sans); cursor: pointer; transition: background-color .15s ease, border-color .15s ease; }
+.rt-chip:hover { background: var(--surface-sky); }
+.rt-chip[aria-pressed="true"] { background: var(--sky); border-color: var(--sky); color: var(--on-sky); }
+.rt-count { font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.rt-empty { padding: var(--space-7) var(--space-5); text-align: center; border: 1.5px dashed var(--line-strong); border-radius: var(--radius-md); background: var(--surface); }
+.rt-empty h3 { font-size: 22px; line-height: 28px; margin-bottom: var(--space-2); }
+.rt-empty .rt-btn { margin-top: var(--space-4); }
+
+/* Routes / transport */
+.rt-routes { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-7); align-items: center; }
+.rt-routes-intro h2 { font-size: 36px; line-height: 42px; letter-spacing: -.015em; margin: var(--space-2) 0 var(--space-4); }
+.rt-routes-list { display: flex; flex-direction: column; gap: var(--space-4); }
+.rt-route { display: grid; grid-template-columns: 200px 1fr; background: var(--surface); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.rt-route:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.rt-route img { width: 100%; height: 100%; min-height: 148px; object-fit: cover; }
+.rt-route-body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
+.rt-route h3 { font-size: 20px; line-height: 26px; }
+.rt-route p { font-size: 15px; line-height: 24px; }
+
+/* Destinations */
+.rt-dest-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 250px; gap: var(--space-4); }
+.rt-dest { position: relative; overflow: hidden; border-radius: var(--radius-md); text-decoration: none; color: #ffffff; display: flex; align-items: flex-end; }
+.rt-dest-lg { grid-column: span 2; grid-row: span 2; }
+.rt-dest-wide { grid-column: span 2; }
+.rt-dest img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.rt-dest:hover img { transform: scale(1.05); }
+.rt-dest::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, var(--scrim) 0%, var(--scrim) 30%, rgba(11, 41, 117, 0) 72%); }
+.rt-dest-copy { position: relative; z-index: 2; padding: var(--space-5); }
+.rt-dest h3 { color: #ffffff; font-size: 22px; line-height: 28px; }
+.rt-dest-lg h3 { font-size: 30px; line-height: 36px; }
+.rt-dest p { margin-top: var(--space-1); font-size: 15px; line-height: 22px; color: #ffffff; max-width: 340px; }
+.rt-dest-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--space-3); font: 600 14px/20px var(--font-sans); color: #ffffff; }
+
+/* Newsletter */
+.rt-news { position: relative; overflow: hidden; border-radius: var(--radius-lg); background: var(--surface-sky); padding: var(--space-8) var(--space-7); text-align: center; }
+.rt-news-clouds { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.rt-news-clouds ellipse { fill: var(--surface); opacity: .7; }
+.rt-news-inner { position: relative; max-width: 560px; margin: 0 auto; }
+.rt-news h2 { font-size: 32px; line-height: 38px; letter-spacing: -.01em; }
+.rt-news-text { margin-top: var(--space-3); }
+.rt-news-form { display: flex; gap: var(--space-3); margin-top: var(--space-6); }
+.rt-news-form .rt-input { padding-left: var(--space-5); flex: 1; }
+.rt-news-form .rt-input[aria-invalid="true"] { border-color: var(--danger); }
+.rt-field-msg { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: var(--space-3); font-size: 14px; line-height: 20px; font-weight: 600; }
+.rt-field-error { color: var(--danger); }
+.rt-success { display: inline-flex; align-items: center; gap: var(--space-3); margin-top: var(--space-6); padding: var(--space-4) var(--space-5); border-radius: var(--radius-md); background: var(--surface); color: var(--success); font-weight: 600; text-align: left; }
+.rt-success span { color: var(--ink); font-weight: 500; }
+.rt-demo-note { margin-top: var(--space-4); font-size: 13px; line-height: 18px; color: var(--ink-muted); }
+
+/* Footer */
+.rt-footer { background: var(--navy); color: var(--on-navy-muted); padding: var(--space-8) 0 var(--space-6); font-size: 15px; line-height: 24px; }
+.rt-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: var(--space-7); }
+.rt-footer .rt-brand { color: var(--on-navy); }
+.rt-footer .rt-brand-mark { background: var(--sky); color: var(--on-sky); }
+.rt-footer h3 { font: 700 13px/18px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--on-navy); margin-bottom: var(--space-4); }
+.rt-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.rt-footer a { color: var(--on-navy); text-decoration: none; }
+.rt-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.rt-footer-about { margin-top: var(--space-4); max-width: 340px; }
+.rt-social { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }
+.rt-social a { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border: 1px solid rgba(197, 221, 236, .45); border-radius: var(--radius-pill); font-size: 14px; }
+.rt-contact li { display: flex; gap: var(--space-2); align-items: flex-start; }
+.rt-contact .rt-icon { margin-top: 3px; color: var(--sky); }
+.rt-placeholder { font-style: italic; }
+.rt-footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); margin-top: var(--space-7); padding-top: var(--space-5); border-top: 1px solid rgba(197, 221, 236, .25); font-size: 14px; }
+.rt-footer-bottom ul { flex-direction: row; gap: var(--space-5); }
+
+/* Article page */
+.rt-article { padding: var(--space-7) 0 var(--space-8); }
+.rt-article-head { max-width: 760px; margin: 0 auto; }
+.rt-back { display: inline-flex; align-items: center; gap: 6px; font: 600 15px/20px var(--font-sans); color: var(--accent-text); text-decoration: none; margin-bottom: var(--space-6); }
+.rt-back:hover { text-decoration: underline; text-underline-offset: 4px; }
+.rt-article-head h1 { font-size: 42px; line-height: 48px; letter-spacing: -.015em; margin: var(--space-3) 0 var(--space-4); }
+.rt-article-cover { max-width: 1000px; margin: var(--space-6) auto 0; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 16 / 8; background: var(--surface-sky); }
+.rt-article-cover img { width: 100%; height: 100%; object-fit: cover; }
+.rt-prose { max-width: 68ch; margin: var(--space-7) auto 0; font-size: 18px; line-height: 30px; color: var(--ink-body); }
+.rt-prose > * + * { margin-top: var(--space-5); }
+.rt-prose h2 { font-size: 28px; line-height: 34px; margin-top: var(--space-7); }
+.rt-prose h3 { font-size: 22px; line-height: 28px; margin-top: var(--space-6); }
+.rt-prose ul, .rt-prose ol { padding-left: 1.3em; }
+.rt-prose li + li { margin-top: var(--space-2); }
+.rt-prose li::marker { color: var(--accent-text); }
+.rt-prose strong { color: var(--ink); }
+.rt-prose a { color: var(--link); text-underline-offset: 3px; }
+.rt-prose blockquote { margin-left: 0; margin-right: 0; padding: var(--space-5); border-radius: var(--radius-md); background: var(--surface-sky); color: var(--ink); font-family: var(--font-display); font-size: 21px; line-height: 30px; }
+.rt-prose figure { margin-left: 0; margin-right: 0; }
+.rt-prose figure img { border-radius: var(--radius-md); width: 100%; }
+.rt-prose figcaption { margin-top: var(--space-2); font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.rt-prose code { font-size: .9em; background: var(--surface-muted); padding: 2px 6px; border-radius: 6px; }
+.rt-related { margin-top: var(--space-8); }
+.rt-related h2 { font-size: 28px; line-height: 34px; margin-bottom: var(--space-5); }
+.rt-doc { max-width: 68ch; margin: 0 auto; padding: var(--space-8) 0; }
+.rt-doc h1 { font-size: 42px; line-height: 48px; margin: var(--space-3) 0 var(--space-5); }
+.rt-doc p + p { margin-top: var(--space-4); }
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .rt-cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rt-art-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rt-routes { grid-template-columns: 1fr; }
+  .rt-dest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rt-dest-grid > :last-child { grid-column: span 2; }
+  .rt-footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .rt-container { padding: 0 var(--space-4); }
+  .rt-section { padding: var(--space-7) 0; }
+  .rt-header-bar { height: 64px; }
+  .rt-hero { padding-top: var(--space-3); }
+  .rt-hero-frame { min-height: 520px; align-items: flex-end; }
+  .rt-hero-frame::before { background: linear-gradient(0deg, var(--scrim) 0%, var(--scrim) 50%, rgba(11, 41, 117, .15) 100%); }
+  .rt-hero-copy { padding: var(--space-6) var(--space-5); }
+  .rt-hero-copy h1 { font-size: 38px; line-height: 42px; }
+  .rt-hero-copy p { font-size: 17px; line-height: 27px; }
+  .rt-hero-actions .rt-btn { width: 100%; }
+  .rt-section-head { flex-direction: column; align-items: flex-start; margin-bottom: var(--space-6); }
+  .rt-section-head h2, .rt-routes-intro h2, .rt-news h2 { font-size: 28px; line-height: 34px; }
+  .rt-cat-grid, .rt-art-grid { grid-template-columns: 1fr; }
+  .rt-route { grid-template-columns: 112px 1fr; }
+  .rt-route-body { padding: var(--space-4); }
+  .rt-dest-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+  .rt-dest-lg, .rt-dest-wide, .rt-dest-grid > :last-child { grid-column: span 1; grid-row: span 1; }
+  .rt-news { padding: var(--space-7) var(--space-5); }
+  .rt-news-form { flex-direction: column; }
+  .rt-footer-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .rt-article-head h1, .rt-doc h1 { font-size: 32px; line-height: 38px; }
+  .rt-prose { font-size: 17px; line-height: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rt *, .rt *::before, .rt *::after { transition: none !important; animation: none !important; }
+}
+
+/* Ajustes do tema Blogger */
+.rt-logo img{display:block;height:58px;width:auto}
+.rt-logo .logo-claro{display:none}
+@media (prefers-color-scheme: dark){ .rt-logo .logo-azul{display:none} .rt-logo .logo-claro{display:block} }
+.rt-footer .rt-logo img{height:64px}
+.rt-footer .rt-logo .logo-azul{display:none}.rt-footer .rt-logo .logo-claro{display:block}
+.rt-cat-icon{background:var(--mist)}
+a.rt-chip{display:inline-flex;align-items:center;text-decoration:none}
+.rt-chip[aria-current="page"]{background:var(--sky);border-color:var(--sky);color:var(--on-sky)}
+.rt-search-form{display:flex;gap:var(--space-3);max-width:620px}
+.rt-search-form .rt-search{flex:1;max-width:none}
+.rt-handle{display:inline-flex;align-items:center;gap:6px;text-decoration:none;height:34px;padding:0 14px;border:1px solid rgba(202,245,247,.45);border-radius:var(--radius-pill);color:var(--on-navy);font-size:14px;margin-top:var(--space-5)}
+.rt-pager{display:flex;justify-content:center;gap:var(--space-3);margin-top:var(--space-7)}
+.rt-prose img{max-width:100%;height:auto;border-radius:var(--radius-md)}
+.rt-prose > :first-child img,.rt-prose .rt-capa img{width:100%;aspect-ratio:16/8;object-fit:cover;border-radius:var(--radius-lg)}
+.rt-prose .separator{text-align:center}
+.rt-prose a[imageanchor]{display:block;margin:0!important}
+.rt-article-foot{max-width:68ch;margin:var(--space-7) auto 0;padding-top:var(--space-6);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between}
+.rt-labels{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+/* Texto das postagens: ignora cor, fundo e fonte colados pelo editor do Blogger */
+.rt-prose{color:var(--ink-body)!important;background:transparent!important}
+.rt-prose *:not(img):not(svg):not(path){background:transparent!important;background-color:transparent!important;color:inherit!important;font-family:inherit!important;font-size:inherit!important;line-height:inherit!important}
+.rt .rt-prose h1,.rt .rt-prose h2,.rt .rt-prose h3,.rt .rt-prose h4{color:var(--ink)!important;font-family:var(--font-display)!important}
+.rt .rt-prose h2{font-size:28px!important;line-height:34px!important}
+.rt .rt-prose h3,.rt .rt-prose h4{font-size:22px!important;line-height:28px!important}
+.rt .rt-prose strong,.rt .rt-prose b{color:var(--ink)!important}
+.rt .rt-prose a{color:var(--link)!important}
+.rt .rt-prose blockquote{background:var(--surface-sky)!important;color:var(--ink)!important;font-family:var(--font-display)!important;font-size:21px!important;line-height:30px!important}
+@media (max-width:640px){.rt .rt-prose h2{font-size:24px!important;line-height:30px!important}}
+.rt-egg{position:fixed;inset:0;z-index:1000;background:rgba(5,12,30,.88);display:flex;align-items:center;justify-content:center;padding:var(--space-4)}
+.rt-egg[hidden]{display:none}
+.rt-egg-box{width:min(1100px,100%,calc((100vh - 120px) * 1.6));background:#000;border-radius:var(--radius-md);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.rt-egg-bar{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-2) var(--space-4);background:#0b1a3d;color:#eaf6fc;font:600 14px/20px var(--font-sans)}
+.rt-egg-bar a{color:#5ed6da}
+.rt-egg-close{background:none;border:1.5px solid rgba(234,246,252,.5);color:#eaf6fc;border-radius:var(--radius-pill);width:36px;height:36px;cursor:pointer;font-size:18px;line-height:1}
+.rt-egg-stage{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#000}
+.rt-egg-stage iframe{position:absolute;top:0;left:0;width:640px;height:400px;border:0;background:#000;transform-origin:0 0}
+.rt-data-post{display:none!important}
+.rt-art-media{position:relative}
+.rt-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:var(--space-5);background:#0b2975;color:#caf5f7;text-align:center}
+.rt-ph-pin{color:#1cabb0;font-size:22px;line-height:1}
+.rt-ph-place{font:600 22px/28px var(--font-display);color:#ffffff}
+.rt-ph-brand{font:700 11px/16px var(--font-sans);letter-spacing:.12em;text-transform:uppercase;color:#caf5f7}
+.rt-article-cover{position:relative}
+.rt-ph-lg .rt-ph-place{font-size:36px;line-height:42px}
+#sobre{padding-bottom:0}
+.rt-about{display:grid;grid-template-columns:1fr 1.1fr;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)}
+.rt-about-media{position:relative;min-height:420px;background:var(--surface-sky)}
+.rt-about-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rt-about-body{padding:var(--space-7);display:flex;flex-direction:column;gap:var(--space-4);justify-content:center}
+.rt-about-body h2{font-size:32px;line-height:38px;letter-spacing:-.01em}
+.rt-about-list{list-style:none;margin:var(--space-2) 0 0;padding:0;display:flex;flex-direction:column;gap:var(--space-4)}
+.rt-about-list li{display:flex;gap:var(--space-3);align-items:flex-start}
+.rt-about-list strong{display:block;color:var(--ink);font-size:16px;line-height:22px}
+.rt-about-list span{font-size:15px;line-height:22px}
+.rt-about-icon{flex:none;width:40px;height:40px;border-radius:var(--radius-pill);background:var(--mist);color:var(--ink);display:inline-flex;align-items:center;justify-content:center}
+.rt-about .rt-hero-actions{margin-top:var(--space-3)}
+#rt-grid-feed:empty{display:none}
+@media (max-width:1080px){ .rt-about{grid-template-columns:1fr} .rt-about-media{min-height:260px} }
+@media (max-width:640px){ .rt-logo img{height:48px} .rt-about-body{padding:var(--space-5)} .rt-about-body h2{font-size:26px;line-height:32px} .rt-search-form{flex-direction:column} }
+
+]]></b:skin>
+  <b:template-skin><![CDATA[
+body#layout .rt-hide-layout{display:none}
+]]></b:template-skin>
+</head>
+<body class='rt'>
+  <a class='rt-skip' href='#conteudo'>Pular para o conteúdo</a>
+  
+<header class='rt-header'>
+  <div class='rt-container rt-header-bar'>
+    <a aria-label='Rota Tour — página inicial' class='rt-logo' expr:href='data:blog.homepageUrl'><img alt='Rota Tour' class='logo-azul' height='298' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/logo/logo-rota-tour.png' width='760'/><img alt='Rota Tour' class='logo-claro' height='298' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/logo/logo-rota-tour-claro.png' width='760'/></a>
+    <nav aria-label='Navegação principal' class='rt-nav'><ul><li><a href='/'>Início</a></li><li><a href='/#destinos'>Destinos</a></li><li><a href='/search/label/Dicas%20para%20viajar%20melhor'>Dicas de viagem</a></li><li><a href='/search/label/Roteiros%20e%20destinos'>Roteiros</a></li><li><a href='/#sobre'>Sobre nós</a></li><li><a href='/#contato'>Contato</a></li></ul></nav>
+    <a class='rt-btn rt-btn-primary rt-header-cta' href='/#contato'>Planeje sua próxima viagem</a>
+    <button aria-controls='rt-menu-movel' aria-expanded='false' class='rt-menu-btn' id='rt-menu-btn' type='button'><svg aria-hidden='true' class='rt-icon' fill='none' height='22' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='22'><path d='M4 7h16M4 12h16M4 17h16'/></svg><span class='rt-sr'>Abrir menu</span></button>
+  </div>
+  <div class='rt-mobile' data-open='false' id='rt-menu-movel'>
+    <nav aria-label='Navegação móvel' class='rt-container'><ul><li><a class='rt-mobile-link' href='/'>Início</a></li><li><a class='rt-mobile-link' href='/#destinos'>Destinos</a></li><li><a class='rt-mobile-link' href='/search/label/Dicas%20para%20viajar%20melhor'>Dicas de viagem</a></li><li><a class='rt-mobile-link' href='/search/label/Roteiros%20e%20destinos'>Roteiros</a></li><li><a class='rt-mobile-link' href='/#sobre'>Sobre nós</a></li><li><a class='rt-mobile-link' href='/#contato'>Contato</a></li></ul>
+      <a class='rt-btn rt-btn-primary' href='/#contato'>Planeje sua próxima viagem</a>
+    </nav>
+  </div>
+</header>
+  <main id='conteudo' tabindex='-1' style='outline:none'>
+    <b:if cond='data:view.isHomepage'>
+      
+<section aria-labelledby='hero-titulo' class='rt-hero'>
+  <div class='rt-container'>
+    <div class='rt-hero-frame'>
+      <img alt='Vila com casas de madeira e montanhas cobertas de neve ao fundo' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/hero-montanhas.jpg'/>
+      <div class='rt-hero-copy'>
+        <h1 id='hero-titulo'>Sua próxima viagem começa aqui.</h1>
+        <p>Descubra destinos, encontre inspiração e prepare-se para viver experiências inesquecíveis com a Rota Tour.</p>
+        <div class='rt-hero-actions'>
+          <a class='rt-btn rt-btn-sky rt-btn-lg' href='#destinos'><span>Explorar destinos</span><svg aria-hidden='true' class='rt-icon' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='18'><path d='M5 12h14M13 6l6 6-6 6'/></svg></a>
+          <a class='rt-btn rt-btn-light rt-btn-lg' href='/search/label/Dicas%20para%20viajar%20melhor'>Ver dicas de viagem</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section aria-labelledby='cat-titulo' class='rt-section' id='categorias'>
+  <div class='rt-container'>
+    <div class='rt-section-head'><div><p class='rt-eyebrow'>Categorias</p><h2 id='cat-titulo'>O que você quer descobrir hoje?</h2></div></div>
+    <div class='rt-cat-grid'><a class='rt-cat' href='/search/label/Viagens%20de%20avi%C3%A3o'><span aria-hidden='true' class='rt-cat-icon'><svg aria-hidden='true' class='rt-icon' fill='none' height='24' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='24'><path d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/></svg></span><h3>Viagens de avião</h3><p>Embarque, bagagem e conforto a bordo para voar com tranquilidade.</p><span class='rt-btn rt-btn-link'><span>Explorar artigos</span><svg aria-hidden='true' class='rt-icon' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='18'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></a><a class='rt-cat' href='/search/label/Viagens%20de%20%C3%B4nibus'><span aria-hidden='true' class='rt-cat-icon'><svg aria-hidden='true' class='rt-icon' fill='none' height='24' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='24'><path d='M8 6v6M15 6v6M2 12h19.6M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3M9 18h5'/><circle cx='7' cy='18' r='2'/><circle cx='16' cy='18' r='2'/></svg></span><h3>Viagens de ônibus</h3><p>Como aproveitar a estrada com conforto, segurança e boas paradas.</p><span class='rt-btn rt-btn-link'><span>Explorar artigos</span><svg aria-hidden='true' class='rt-icon' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='18'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></a><a class='rt-cat' href='/search/label/Roteiros%20e%20destinos'><span aria-hidden='true' class='rt-cat-icon'><svg aria-hidden='true' class='rt-icon' fill='none' height='24' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='24'><path d='M14.1 5.55a2 2 0 0 0 1.8 0l3.65-1.83A1 1 0 0 1 21 4.62v12.76a1 1 0 0 1-.55.9l-4.55 2.27a2 2 0 0 1-1.8 0l-4.2-2.1a2 2 0 0 0-1.8 0l-3.65 1.83A1 1 0 0 1 3 19.38V6.62a1 1 0 0 1 .55-.9L8.1 3.45a2 2 0 0 1 1.8 0zM15 5.76v15M9 3.24v15'/></svg></span><h3>Roteiros e destinos</h3><p>Ideias de lugares e roteiros prontos para inspirar a próxima viagem.</p><span class='rt-btn rt-btn-link'><span>Explorar artigos</span><svg aria-hidden='true' class='rt-icon' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='18'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></a><a class='rt-cat' href='/search/label/Dicas%20para%20viajar%20melhor'><span aria-hidden='true' class='rt-cat-icon'><svg aria-hidden='true' class='rt-icon' fill='none' height='24' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='24'><path d='M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM8 10h8M8 18h8M8 22v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2'/></svg></span><h3>Dicas para viajar melhor</h3><p>Planejamento, orçamento e mala: o essencial para viajar leve.</p><span class='rt-btn rt-btn-link'><span>Explorar artigos</span><svg aria-hidden='true' class='rt-icon' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='18'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></a></div>
+  </div>
+</section>
+    </b:if>
+    <section expr:class='data:view.isSingleItem ? &quot;&quot; : &quot;rt-section rt-section-muted&quot;' id='artigos'>
+    <div expr:class='data:view.isSingleItem ? &quot;&quot; : &quot;rt-container&quot;'>
+    <b:if cond='!data:view.isSingleItem'>
+      
+        <div class='rt-section-head'>
+          <div>
+            <b:if cond='data:view.isLabelSearch'>
+              <p class='rt-eyebrow'>Categoria</p><h2><data:view.search.label/></h2>
+            <b:elseif cond='data:view.isSearch'/>
+              <p class='rt-eyebrow'>Busca</p><h2>Resultados para “<data:view.search.query/>”</h2>
+            <b:elseif cond='data:view.isArchive'/>
+              <p class='rt-eyebrow'>Arquivo</p><h2><data:view.archive.rangeMessage/></h2>
+            <b:else/>
+              <p class='rt-eyebrow'>Artigos em destaque</p><h2>Leituras para planejar com calma</h2>
+            </b:if>
+          </div>
+          <b:if cond='!data:view.isHomepage'><a class='rt-btn rt-btn-ghost' expr:href='data:blog.homepageUrl'><svg aria-hidden='true' class='rt-icon' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='18'><path d='M19 12H5M11 18l-6-6 6-6'/></svg><span>Voltar ao início</span></a></b:if>
+        </div>
+        <div class='rt-filters'>
+          <form class='rt-search-form' expr:action='data:blog.searchUrl' role='search'>
+            <div class='rt-search'>
+              <label class='rt-sr' for='rt-busca'>Buscar artigos</label>
+              <svg aria-hidden='true' class='rt-icon' fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='20'><circle cx='11' cy='11' r='7.5'/><path d='m21 21-4.6-4.6'/></svg>
+              <input class='rt-input' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' id='rt-busca' name='q' placeholder='Buscar por destino, transporte, mala…' type='search'/>
+            </div>
+            <button class='rt-btn rt-btn-primary' type='submit'>Buscar</button>
+          </form>
+          <div aria-label='Filtrar por categoria' class='rt-chips' role='group'><a class='rt-chip' href='/'><b:attr cond='data:view.isHomepage' name='aria-current' value='page'/>Todos</a><a class='rt-chip' href='/search/label/Viagens%20de%20avi%C3%A3o'><b:attr cond='data:view.isLabelSearch and data:view.search.label == &quot;Viagens de avião&quot;' name='aria-current' value='page'/>Viagens de avião</a><a class='rt-chip' href='/search/label/Viagens%20de%20%C3%B4nibus'><b:attr cond='data:view.isLabelSearch and data:view.search.label == &quot;Viagens de ônibus&quot;' name='aria-current' value='page'/>Viagens de ônibus</a><a class='rt-chip' href='/search/label/Roteiros%20e%20destinos'><b:attr cond='data:view.isLabelSearch and data:view.search.label == &quot;Roteiros e destinos&quot;' name='aria-current' value='page'/>Roteiros e destinos</a><a class='rt-chip' href='/search/label/Dicas%20para%20viajar%20melhor'><b:attr cond='data:view.isLabelSearch and data:view.search.label == &quot;Dicas para viajar melhor&quot;' name='aria-current' value='page'/>Dicas para viajar melhor</a></div>
+        </div>
+
+    </b:if>
+    <b:section class='main' id='main' maxwidgets='1' name='Postagens' showaddelement='false'>
+      <b:widget id='Blog1' locked='true' title='Postagens' type='Blog' version='2' visible='true'>
+        <b:widget-settings>
+          <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+          <b:widget-setting name='showLabels'>true</b:widget-setting>
+          <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+        </b:widget-settings>
+        
+<b:includable id='main'>
+  <b:if cond='data:view.isSingleItem'>
+    <b:loop values='data:posts' var='post'>
+      <article class='rt-article' id='rt-post'>
+        <div class='rt-container'>
+          <header class='rt-article-head'>
+            <a class='rt-back' href='/#artigos'><svg aria-hidden='true' class='rt-icon' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='18'><path d='M19 12H5M11 18l-6-6 6-6'/></svg> Todos os artigos</a>
+            <p class='rt-eyebrow rt-post-cat'></p>
+            <h1><data:post.title/></h1>
+            <p class='rt-meta rt-post-meta' style='padding-top:0'></p>
+          </header>
+          <div class='rt-prose'><data:post.body/></div>
+        </div>
+      </article>
+    </b:loop>
+  <b:else/>
+    <ul class='rt-sr' id='rt-grid-blogger'>
+      <b:loop values='data:posts' var='post'>
+        <li><a expr:href='data:post.url'><data:post.title/></a></li>
+      </b:loop>
+    </ul>
+  </b:if>
+</b:includable>
+      </b:widget>
+    </b:section>
+    <b:if cond='data:view.isSingleItem'>
+      <div id='rt-single-feed'></div>
+    </b:if>
+    <b:if cond='!data:view.isSingleItem'>
+      <div class='rt-art-grid' id='rt-grid-feed'></div>
+      <div class='rt-empty' hidden='hidden' id='rt-empty'><h3>Nenhum artigo encontrado</h3><p>Ainda não há artigos aqui. Tente outra categoria ou volte para o início.</p><a class='rt-btn rt-btn-ghost' href='/'>Ver todos os artigos</a></div>
+    </b:if>
+    </div>
+    </section>
+    <b:if cond='data:view.isHomepage'>
+      
+<section aria-labelledby='rotas-titulo' class='rt-section' id='transportes'>
+  <div class='rt-container rt-routes'>
+    <div class='rt-routes-intro'>
+      <p class='rt-eyebrow'>Transporte e rotas</p>
+      <h2 id='rotas-titulo'>Cada caminho leva a uma nova experiência.</h2>
+      <p>Seja cruzando o céu, descobrindo novas paisagens pela estrada ou planejando o próximo destino, a Rota Tour ajuda você a transformar planos em experiências.</p>
+    </div>
+    <div class='rt-routes-list'>
+      <a class='rt-route' href='/search/label/Viagens%20de%20avi%C3%A3o'><img alt='Pessoa com mala no aeroporto e avião decolando ao fundo' loading='lazy' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-aviao.jpg'/><div class='rt-route-body'><p class='rt-eyebrow'>Pelo céu</p><h3>Viagens de avião</h3><p>Mais tempo no destino e menos tempo no caminho. Saiba como embarcar tranquilo.</p></div></a>
+      <a class='rt-route' href='/search/label/Viagens%20de%20%C3%B4nibus'><img alt='Ônibus de turismo em estrada litorânea' loading='lazy' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-onibus.jpg'/><div class='rt-route-body'><p class='rt-eyebrow'>Pela estrada</p><h3>Viagens de ônibus</h3><p>Paisagens pela janela, paradas no caminho e conforto do embarque ao desembarque.</p></div></a>
+      <a class='rt-route' href='/search/label/Roteiros%20e%20destinos'><img alt='Torre Eiffel em Paris sob um céu azul' loading='lazy' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-roteiro-paris.jpg'/><div class='rt-route-body'><p class='rt-eyebrow'>No mapa</p><h3>Roteiros sob medida</h3><p>Organize trajetos, dias e passeios para aproveitar cada momento.</p></div></a>
+    </div>
+  </div>
+</section>
+<section aria-labelledby='dest-titulo' class='rt-section rt-section-sky' id='destinos'>
+  <div class='rt-container'>
+    <div class='rt-section-head'><div><p class='rt-eyebrow'>Inspiração</p><h2 id='dest-titulo'>Para onde vamos desta vez?</h2><p>Destinos nacionais e internacionais para cada estilo de viagem.</p></div></div>
+    <div class='rt-dest-grid'><a class='rt-dest rt-dest-lg' href='/search/label/Praias%20e%20natureza'><img alt='Cristo Redentor com vista para a baía e as praias do Rio de Janeiro' loading='lazy' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/destino-praias-rio.jpg'/><div class='rt-dest-copy'><h3>Praias e natureza</h3><p>Mar calmo, trilhas e paisagens para recarregar.</p><span class='rt-dest-cta'>Ver artigos <svg aria-hidden='true' class='rt-icon' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></div></a><a class='rt-dest' href='/search/label/Cidades%20e%20cultura'><img alt='Torre inclinada e catedral de Pisa, na Itália' loading='lazy' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/destino-cidades-pisa.jpg'/><div class='rt-dest-copy'><h3>Cidades e cultura</h3><p>Museus, arquitetura e sabores locais.</p><span class='rt-dest-cta'>Ver artigos <svg aria-hidden='true' class='rt-icon' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></div></a><a class='rt-dest' href='/search/label/Viagens%20em%20fam%C3%ADlia'><img alt='Castelo de parque temático com estátua em primeiro plano' loading='lazy' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/destino-familia-orlando.jpg'/><div class='rt-dest-copy'><h3>Viagens em família</h3><p>Roteiros pensados para todas as idades.</p><span class='rt-dest-cta'>Ver artigos <svg aria-hidden='true' class='rt-icon' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></div></a><a class='rt-dest rt-dest-wide' href='/search/label/Escapadas%20de%20fim%20de%20semana'><img alt='Vista aérea de Gramado, na Serra Gaúcha' loading='lazy' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/destino-escapadas-gramado.jpg'/><div class='rt-dest-copy'><h3>Escapadas de fim de semana</h3><p>Destinos perto para aproveitar em poucos dias.</p><span class='rt-dest-cta'>Ver artigos <svg aria-hidden='true' class='rt-icon' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></div></a><a class='rt-dest' href='/search/label/Destinos%20para%20descansar'><img alt='Lago de água azul-turquesa cercado por montanhas' loading='lazy' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/destino-descansar-lago.jpg'/><div class='rt-dest-copy'><h3>Destinos para descansar</h3><p>Natureza, silêncio e tempo livre.</p><span class='rt-dest-cta'>Ver artigos <svg aria-hidden='true' class='rt-icon' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></div></a></div>
+  </div>
+</section>
+
+<section aria-labelledby='sobre-titulo' class='rt-section' id='sobre'>
+  <div class='rt-container'>
+    <div class='rt-about'>
+      <div class='rt-about-media'><img alt='Pessoa com mala no saguão do aeroporto, com um avião decolando ao fundo' loading='lazy' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-aviao.jpg'/></div>
+      <div class='rt-about-body'>
+        <p class='rt-eyebrow'>Sobre nós</p>
+        <h2 id='sobre-titulo'>Viajar pode ser simples, confortável e inspirador.</h2>
+        <p>A Rota Tour ajuda você a planejar viagens de avião e de ônibus com tranquilidade — do primeiro roteiro ao retorno para casa. Aqui no blog, reunimos dicas práticas, roteiros e inspirações para cada estilo de viagem.</p>
+        <ul class='rt-about-list'>
+          <li><span class='rt-about-icon'><svg aria-hidden='true' class='rt-icon' fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='20'><path d='M14.1 5.55a2 2 0 0 0 1.8 0l3.65-1.83A1 1 0 0 1 21 4.62v12.76a1 1 0 0 1-.55.9l-4.55 2.27a2 2 0 0 1-1.8 0l-4.2-2.1a2 2 0 0 0-1.8 0l-3.65 1.83A1 1 0 0 1 3 19.38V6.62a1 1 0 0 1 .55-.9L8.1 3.45a2 2 0 0 1 1.8 0zM15 5.76v15M9 3.24v15'/></svg></span><div><strong>Planejamento sem estresse</strong><span>Datas, transporte, hospedagem e roteiro organizados com calma.</span></div></li>
+          <li><span class='rt-about-icon'><svg aria-hidden='true' class='rt-icon' fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='20'><path d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/></svg></span><div><strong>Pelo céu ou pela estrada</strong><span>Dicas para voar tranquilo e para aproveitar cada paisagem de ônibus.</span></div></li>
+          <li><span class='rt-about-icon'><svg aria-hidden='true' class='rt-icon' fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='20'><circle cx='12' cy='12' r='9.5'/><path d='M12 7v5l3 2'/></svg></span><div><strong>Atendimento próximo</strong><span>Fale com a gente de segunda a sexta, das 9h às 18h.</span></div></li>
+        </ul>
+        <div class='rt-hero-actions'>
+          <a class='rt-btn rt-btn-primary' href='#contato'><span>Fale com a gente</span><svg aria-hidden='true' class='rt-icon' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='18'><path d='M5 12h14M13 6l6 6-6 6'/></svg></a>
+          <a class='rt-btn rt-btn-ghost' href='/search/label/Dicas%20para%20viajar%20melhor'>Ver dicas de viagem</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section aria-labelledby='news-titulo' class='rt-section' id='newsletter'>
+  <div class='rt-container'>
+    <div class='rt-news'>
+      <svg aria-hidden='true' class='rt-news-clouds' preserveAspectRatio='xMidYMid slice' viewBox='0 0 1000 360'><ellipse cx='90' cy='300' rx='160' ry='46'/><ellipse cx='170' cy='270' rx='80' ry='44'/><ellipse cx='900' cy='70' rx='150' ry='36'/><ellipse cx='840' cy='50' rx='70' ry='36'/><ellipse cx='940' cy='320' rx='110' ry='30'/></svg>
+      <div class='rt-news-inner'>
+        <h2 id='news-titulo'>Inspire-se para sua próxima viagem.</h2>
+        <p class='rt-news-text'>Receba dicas, roteiros e inspirações para descobrir novos destinos.</p>
+        <form class='rt-news-form' id='rt-news-form' novalidate='novalidate'>
+          <label class='rt-sr' for='rt-news-email'>Seu e-mail</label>
+          <input aria-invalid='false' autocomplete='email' class='rt-input' id='rt-news-email' placeholder='seuemail@exemplo.com' type='email'/>
+          <button class='rt-btn rt-btn-primary rt-btn-lg' type='submit'>Quero receber</button>
+        </form>
+        <p class='rt-field-msg rt-field-error' hidden='hidden' id='rt-news-erro' role='alert'></p>
+        <div class='rt-success' hidden='hidden' id='rt-news-ok' role='status'>Tudo certo! <span>Seu e-mail foi validado nesta demonstração — nenhum dado foi enviado ou armazenado.</span></div>
+        <p class='rt-demo-note'>Formulário demonstrativo: ainda não está conectado a um serviço de e-mail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+    </b:if>
+  </main>
+  <div aria-label='Easter egg: DOOM' aria-modal='true' class='rt-egg' hidden='hidden' id='rt-egg' role='dialog'>
+    <div class='rt-egg-box'>
+      <div class='rt-egg-bar'>
+        <span>DOOM (versão shareware, 1993) · <a href='https://archive.org/details/DoomsharewareEpisode' rel='noopener noreferrer' target='_blank'>abrir em nova aba</a></span>
+        <button aria-label='Fechar' class='rt-egg-close' id='rt-egg-close' type='button'>✕</button>
+      </div>
+      <div class='rt-egg-stage' id='rt-egg-frame'></div>
+    </div>
+  </div>
+  
+<footer class='rt-footer' id='contato'>
+  <div class='rt-container'>
+    <div class='rt-footer-grid'>
+      <div>
+        <a aria-label='Rota Tour — página inicial' class='rt-logo' expr:href='data:blog.homepageUrl'><img alt='Rota Tour' class='logo-azul' height='298' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/logo/logo-rota-tour.png' width='760'/><img alt='Rota Tour' class='logo-claro' height='298' src='https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/logo/logo-rota-tour-claro.png' width='760'/></a>
+        <p class='rt-footer-about'>A Rota Tour ajuda você a planejar viagens de avião e de ônibus com tranquilidade — do primeiro roteiro ao retorno para casa.</p>
+        <p><a aria-label='Instagram da Rota Tour (abre em nova aba)' class='rt-handle' href='https://www.instagram.com/rotatour.blog/' rel='noopener noreferrer' target='_blank'><svg aria-hidden='true' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><rect height='18' rx='5' width='18' x='3' y='3'/><circle cx='12' cy='12' r='4'/><circle cx='17.5' cy='6.5' fill='currentColor' r='.5'/></svg>&#160;@rotatour.blog</a></p>
+      </div>
+      <nav aria-labelledby='rodape-nav'><h3 id='rodape-nav'>Navegação</h3><ul><li><a href='/'>Início</a></li><li><a href='/#destinos'>Destinos</a></li><li><a href='/search/label/Dicas%20para%20viajar%20melhor'>Dicas de viagem</a></li><li><a href='/search/label/Roteiros%20e%20destinos'>Roteiros</a></li><li><a href='/#sobre'>Sobre nós</a></li><li><a href='/#contato'>Contato</a></li></ul></nav>
+      <nav aria-labelledby='rodape-cat'><h3 id='rodape-cat'>Categorias</h3><ul><li><a href='/search/label/Viagens%20de%20avi%C3%A3o'>Viagens de avião</a></li><li><a href='/search/label/Viagens%20de%20%C3%B4nibus'>Viagens de ônibus</a></li><li><a href='/search/label/Roteiros%20e%20destinos'>Roteiros e destinos</a></li><li><a href='/search/label/Dicas%20para%20viajar%20melhor'>Dicas para viajar melhor</a></li></ul></nav>
+      <div>
+        <h3>Contato</h3>
+        <ul class='rt-contact'>
+          <li><svg aria-hidden='true' class='rt-icon' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z'/></svg><span><a href='tel:+5511900009008'>(11) 90000-9008</a> · <a href='https://wa.me/5511900009008' rel='noopener noreferrer' target='_blank'>WhatsApp</a></span></li>
+          <li><svg aria-hidden='true' class='rt-icon' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><rect height='15' rx='2' width='19' x='2.5' y='4.5'/><path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'/></svg><span><a href='mailto:rotatour@gmail.com'>rotatour@gmail.com</a></span></li>
+          <li><svg aria-hidden='true' class='rt-icon' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><path d='M20 10c0 5-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 15 4 10a8 8 0 0 1 16 0'/><circle cx='12' cy='10' r='3'/></svg><span><a href='https://www.google.com/maps/search/?api=1&amp;query=Rua%20Jundia%C3%AD%2C%20123' rel='noopener noreferrer' target='_blank'>Rua Jundiaí, 123</a></span></li>
+          <li><svg aria-hidden='true' class='rt-icon' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' viewBox='0 0 24 24' width='16'><circle cx='12' cy='12' r='9.5'/><path d='M12 7v5l3 2'/></svg><span>9h às 18h, de segunda a sexta</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class='rt-footer-bottom'>
+      <p>© <span id='rt-ano'>2026</span> Rota Tour. Todos os direitos reservados.</p>
+      <ul><li><a href='/p/politica-de-privacidade.html'>Política de privacidade</a></li><li><a href='/p/termos-de-uso.html'>Termos de uso</a></li></ul>
+    </div>
+  </div>
+</footer>
+  
+<script>
+//<![CDATA[
+(function(){
+  var b=document.getElementById('rt-menu-btn'), m=document.getElementById('rt-menu-movel');
+  if(b&&m){
+    b.addEventListener('click',function(){var o=m.getAttribute('data-open')==='true';m.setAttribute('data-open',o?'false':'true');b.setAttribute('aria-expanded',o?'false':'true');});
+    m.addEventListener('click',function(e){if(e.target.tagName==='A'){m.setAttribute('data-open','false');b.setAttribute('aria-expanded','false');}});
+  }
+  var y=document.getElementById('rt-ano'); if(y) y.textContent=new Date().getFullYear();
+  var ds=document.querySelectorAll('time.rt-date');
+  for(var k=0;k<ds.length;k++){var t=ds[k],d=new Date(t.getAttribute('datetime'));
+    if(!isNaN(d)){t.textContent=('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}}
+
+
+  var CATS=['Viagens de avião','Viagens de ônibus','Roteiros e destinos','Dicas para viajar melhor'];
+  function fmt(iso){var d=new Date(iso);return isNaN(d)?'':('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}
+  function txt(h){var t=document.createElement('div');t.innerHTML=h;var dp=t.querySelectorAll('.rt-data-post');for(var z=0;z<dp.length;z++)dp[z].remove();return (t.textContent||'').replace(/\s+/g,' ').trim();}
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;}
+  function alt(e){var l=(e.link||[]).filter(function(x){return x.rel==='alternate';})[0];return l?l.href:'#';}
+  function labels(e){return (e.category||[]).map(function(c){return c.term;});}
+  function cat(e){return labels(e).filter(function(t){return CATS.indexOf(t)>=0;})[0]||'';}
+  function body(e){return (e.content&&e.content.$t)||(e.summary&&e.summary.$t)||'';}
+  function firstImg(e){var m=body(e).match(/<img[^>]+src=["']([^"']+)["']/i);if(m)return m[1];return e.media$thumbnail?e.media$thumbnail.url.replace(/\/s72-c\//,'/w720-h450-c/'):'';}
+  function pdate(e){var m=body(e).match(/data-date=["'](\d{4}-\d{2}-\d{2})["']/);return m?m[1]+'T12:00:00':e.published.$t;}
+  function samePath(u){try{return new URL(u,location.href).pathname===location.pathname;}catch(_){return false;}}
+  function getJSON(u){return fetch(u).then(function(r){return r.json();});}
+  var path=decodeURIComponent(location.pathname), qs=new URLSearchParams(location.search);
+  var isPost=/^\/\d{4}\/\d{2}\/.+\.html$/.test(path), isPage=/^\/p\/.+\.html$/.test(path);
+  var em=document.getElementById('rt-empty'), gF=document.getElementById('rt-grid-feed'), gB=document.getElementById('rt-grid-blogger');
+
+  /* ===== ARTIGOS EMBUTIDOS NO TEMA =====
+     Para adicionar um artigo, copie um item desta lista e altere os campos:
+     s = endereço (sem espaços/acentos) · t = título · d = data AAAA-MM-DD · l = marcadores
+     c = categoria · i = link da foto de capa ('' = capa azul com o nome do lugar) · a = descrição da foto
+     p = nome do lugar (aparece na capa azul) · e = resumo do card · h = texto em HTML */
+  var EMB=[{"s": "paraty-roteiro-3-dias", "t": "Paraty em 3 dias: o roteiro perfeito de charme, praias e história", "d": "2026-11-05", "l": ["Roteiros e destinos", "Cidades e cultura", "Praias e natureza", "Viagens em família"], "c": "Roteiros e destinos", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-paraty.jpg", "a": "Barcos coloridos e igreja colonial no cais de Paraty", "p": "Paraty (RJ)", "e": "Poucos lugares misturam cultura colonial tão preservada com praias de água calma e montanhas de Mata Atlântica como Paraty, no litoral sul do Rio de Janeiro. Com 3…", "h": "<p>Poucos lugares misturam cultura colonial tão preservada com praias de água calma e montanhas de Mata Atlântica como Paraty, no litoral sul do Rio de Janeiro. Com 3 dias livres, dá para conhecer o melhor da cidade com calma — a dois, com amigos ou em família.<\/p>\n\n<h2>Antes de ir<\/h2>\n\n<ul><li><strong>Como chegar:<\/strong> Paraty fica entre Rio de Janeiro e São Paulo, a cerca de 4 a 5 horas de carro de cada capital, pela Rio-Santos. Há ônibus regulares para a rodoviária da cidade.<\/li><li><strong>Centro histórico sem carros:<\/strong> as ruas são de pedras irregulares. Use calçado confortável e deixe o salto em casa.<\/li><li><strong>Maré:<\/strong> em algumas luas, a maré cheia invade ruas do centro. É parte do charme — só fique de olho para não molhar os pés.<\/li><\/ul>\n\n<h2>Dia 1: centro histórico<\/h2>\n\n<p>Comece a manhã caminhando pelas ruas de pedra, entre casarões coloniais, igrejas e lojas de artesanato. Pare para um café demorado e, à noite, aproveite o clima dos restaurantes à luz de velas e da música ao vivo.<\/p>\n\n<h2>Dia 2: passeio de barco pelas ilhas<\/h2>\n\n<p>Os passeios de escuna ou traineira saem do cais e passam por ilhas e praias de água calma, como a <strong>Ilha Comprida<\/strong> e a <strong>Praia Vermelha<\/strong>, com paradas para banho de mar. Escolha empresas credenciadas e pergunte o roteiro e o tempo de cada parada antes de fechar.<\/p>\n\n<h2>Dia 3: cachoeiras e alambiques<\/h2>\n\n<p>Suba a serra para conhecer a <strong>Cachoeira do Tobogã<\/strong>, onde os mais corajosos escorregam pela pedra, e o <strong>Poço do Tarzan<\/strong>. Na volta, visite um dos alambiques da região — Paraty é famosa pela tradição da cachaça artesanal (beba com moderação e nunca dirija depois).<\/p>\n\n<h2>Dicas práticas<\/h2>\n\n<ul><li>Reserve a hospedagem com antecedência em feriados e durante eventos como a Festa Literária (FLIP).<\/li><li>Leve repelente: a Mata Atlântica é úmida e tem mosquitos.<\/li><li>Tem mais um dia? Inclua <strong>Trindade<\/strong>, vila de praias e piscinas naturais a poucos quilômetros.<\/li><\/ul>\n\n<h2>Conclusão<\/h2>\n\n<p>Paraty é daqueles destinos que se descobrem devagar. Salve este roteiro e veja outras ideias em <a href=\"/search/label/Cidades%20e%20cultura\">Cidades e cultura<\/a> no blog da Rota Tour.<\/p>"}, {"s": "destinos-que-nao-parecem-brasil", "t": "Destinos que não parecem Brasil (mas são)", "d": "2026-11-03", "l": ["Roteiros e destinos", "Praias e natureza", "Cidades e cultura"], "c": "Roteiros e destinos", "i": "https://commons.wikimedia.org/wiki/Special:FilePath/Len%C3%A7%C3%B3is_Maranhenses_2018.jpg?width=1600", "a": "Dunas brancas e lagoas nos Lençóis Maranhenses", "p": "Lençóis, Holambra, Jalapão e Cambará", "e": "Você não precisa gastar em dólar nem encarar horas de voo internacional para ver paisagens que parecem de outro planeta. O Brasil guarda lugares que lembram…", "h": "<p>Você não precisa gastar em dólar nem encarar horas de voo internacional para ver paisagens que parecem de outro planeta. O Brasil guarda lugares que lembram desertos, vilas europeias e penhascos distantes — com a vantagem de falar a nossa língua e caber no feriado.<\/p>\n\n<h2>1. Lençóis Maranhenses (MA)<\/h2>\n\n<p><strong>Parece:<\/strong> um oásis no Saara. <strong>É:<\/strong> um parque nacional com dunas de areia branca e lagoas de água doce que se formam com as chuvas.<\/p>\n\n<ul><li><strong>Melhor época:<\/strong> as lagoas costumam estar mais cheias no meio do ano. Confirme antes de reservar, porque o volume varia conforme as chuvas.<\/li><li><strong>Base:<\/strong> Barreirinhas é a porta de entrada mais estruturada; Santo Amaro fica mais perto das dunas.<\/li><\/ul>\n\n<h2>2. Holambra (SP)<\/h2>\n\n<p><strong>Parece:<\/strong> uma vila clássica da Holanda. <strong>É:<\/strong> a Capital Nacional das Flores, com arquitetura de inspiração holandesa, moinho e doces típicos, a cerca de 2 horas de São Paulo.<\/p>\n\n<ul><li><strong>Atenção:<\/strong> os campos de flores ficam em propriedades particulares e as visitas costumam exigir agendamento com guia.<\/li><li><strong>Bom para:<\/strong> um bate-volta ou fim de semana tranquilo.<\/li><\/ul>\n\n<h2>3. Fervedouros do Jalapão (TO)<\/h2>\n\n<p><strong>Parece:<\/strong> uma nascente exótica do Sudeste Asiático. <strong>É:<\/strong> piscinas naturais onde a pressão da água que brota do fundo não deixa você afundar.<\/p>\n\n<ul><li><strong>Como visitar:<\/strong> a região tem estradas de areia, por isso os passeios costumam ser feitos em veículos 4x4 com agências locais, saindo de Palmas.<\/li><li><strong>Regras:<\/strong> o tempo dentro de cada fervedouro é limitado para preservar o lugar.<\/li><\/ul>\n\n<h2>4. Cânions de Cambará do Sul (RS)<\/h2>\n\n<p><strong>Parece:<\/strong> os penhascos épicos da Escócia. <strong>É:<\/strong> os cânions <strong>Itaimbezinho<\/strong> e <strong>Fortaleza<\/strong>, com paredões monumentais nos Parques Nacionais de Aparados da Serra e da Serra Geral.<\/p>\n\n<ul><li><strong>Dica:<\/strong> a neblina é comum. Tenha flexibilidade no roteiro para visitar os mirantes em um dia limpo.<\/li><li><strong>Leve:<\/strong> roupas em camadas — o clima muda rápido na serra.<\/li><\/ul>\n\n<h2>Por que explorar o Brasil<\/h2>\n\n<ul><li>Menos tempo de deslocamento e sem câmbio.<\/li><li>Gastronomia regional riquíssima.<\/li><li>A chance de redescobrir o próprio país com outros olhos.<\/li><\/ul>\n\n<h2>Conclusão<\/h2>\n\n<p>Qual desses você ainda não conhecia? Explore mais ideias em <a href=\"/search/label/Roteiros%20e%20destinos\">Roteiros e destinos<\/a> e comece a planejar a próxima viagem com a Rota Tour.<\/p>"}, {"s": "chapada-dos-veadeiros-primeira-viagem", "t": "Chapada dos Veadeiros: guia para a primeira viagem", "d": "2026-10-31", "l": ["Roteiros e destinos", "Destinos para descansar", "Praias e natureza"], "c": "Roteiros e destinos", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-chapada.jpg", "a": "Cachoeira entre cânions verdes na Chapada dos Veadeiros", "p": "Chapada dos Veadeiros (GO)", "e": "Se você precisa desligar da rotina da cidade e respirar ar puro, a Chapada dos Veadeiros, em Goiás, é o seu lugar. Cânions, cachoeiras de água clara, céu estrelado…", "h": "<p>Se você precisa desligar da rotina da cidade e respirar ar puro, a Chapada dos Veadeiros, em Goiás, é o seu lugar. Cânions, cachoeiras de água clara, céu estrelado e trilhas para vários níveis de preparo físico fazem da região um dos destinos de natureza mais especiais do Brasil.<\/p>\n\n<h2>Onde ficar: Alto Paraíso ou São Jorge?<\/h2>\n\n<ul><li><strong>Alto Paraíso de Goiás:<\/strong> cidade maior, com mais opções de hospedagem, restaurantes e serviços. Boa base para quem vai de carro e quer visitar atrativos variados.<\/li><li><strong>Vila de São Jorge:<\/strong> pequena e rústica, fica na porta do <strong>Parque Nacional da Chapada dos Veadeiros<\/strong>. Ideal para quem quer acordar perto das trilhas.<\/li><\/ul>\n\n<h2>Cachoeiras e passeios para começar<\/h2>\n\n<ul><li><strong>Parque Nacional:<\/strong> as trilhas dos Saltos e dos Cânions e Cariocas são clássicas. Confira no site do parque as regras de entrada, horários e se é preciso agendar.<\/li><li><strong>Vale da Lua:<\/strong> formações rochosas esculpidas pela água, perto de São Jorge. Atenção aos avisos de segurança em dias de chuva.<\/li><li><strong>Cachoeiras de acesso mais fácil:<\/strong> há várias em propriedades particulares, com trilhas curtas — ótimas para o primeiro dia.<\/li><\/ul>\n\n<h2>Melhor época<\/h2>\n\n<p>Nos meses mais secos, as trilhas ficam mais firmes e o céu, mais limpo. No período de chuvas, as cachoeiras ganham volume, mas é preciso redobrar a atenção com as <strong>cabeças d'água<\/strong> (subidas repentinas do rio). Sempre siga as orientações dos guias e dos atrativos.<\/p>\n\n<h2>Planeje pela luz do sol<\/h2>\n\n<p>Muitas cachoeiras recebem sol direto só em certos horários. Pergunte na recepção dos atrativos qual é o melhor momento para ver as cores da água — e saia cedo para fugir do calor nas trilhas mais longas.<\/p>\n\n<h2>O que levar na mala<\/h2>\n\n<ul><li>Tênis ou bota de trilha já amaciados.<\/li><li>Protetor solar, chapéu e óculos escuros.<\/li><li>Garrafa de água reutilizável e lanches leves.<\/li><li>Roupa de banho e toalha de secagem rápida.<\/li><li>Repelente e um casaco leve para as noites.<\/li><\/ul>\n\n<h2>Como chegar<\/h2>\n\n<p>A forma mais comum é voar até <strong>Brasília<\/strong> e seguir de carro por cerca de 230 km até Alto Paraíso. Há também ônibus a partir da capital.<\/p>\n\n<h2>Conclusão<\/h2>\n\n<p>A Chapada dos Veadeiros recarrega as energias de quem chega com calma e respeito pela natureza. Veja outros refúgios em <a href=\"/search/label/Destinos%20para%20descansar\">Destinos para descansar<\/a> no blog da Rota Tour.<\/p>"}, {"s": "ouro-preto-roteiro-3-dias", "t": "Ouro Preto em 3 dias: ladeiras históricas e o melhor da comida mineira", "d": "2026-10-29", "l": ["Roteiros e destinos", "Cidades e cultura", "Escapadas de fim de semana"], "c": "Roteiros e destinos", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-ouro-preto.jpg", "a": "Vista do casario colonial e das igrejas de Ouro Preto", "p": "Ouro Preto (MG)", "e": "Viajar para Minas Gerais é ser abraçado a cada esquina — e, na mesa, nem se fala. Ouro Preto é o destino ideal para um fim de semana acolhedor, cheio de história,…", "h": "<p>Viajar para Minas Gerais é ser abraçado a cada esquina — e, na mesa, nem se fala. Ouro Preto é o destino ideal para um fim de semana acolhedor, cheio de história, arte e fartura. O segredo para curtir as ladeiras sem cansaço é organizar os passeios por bairros vizinhos e reservar as tardes para provar os quitutes da terra.<\/p>\n\n<h2>Antes de ir<\/h2>\n\n<ul><li><strong>Calçado confortável é obrigatório:<\/strong> as ruas são de pedra e bem íngremes.<\/li><li><strong>Base:<\/strong> hospedar-se no centro histórico permite fazer quase tudo a pé.<\/li><li><strong>Como chegar:<\/strong> a cidade fica a cerca de 100 km de Belo Horizonte, com ônibus regulares a partir da rodoviária da capital.<\/li><\/ul>\n\n<h2>Dia 1: o coração do centro histórico<\/h2>\n\n<p>Comece pela <strong>Praça Tiradentes<\/strong>, onde fica o <strong>Museu da Inconfidência<\/strong>, que conta a história do movimento e da cidade. Dali, siga até a <strong>Igreja de São Francisco de Assis<\/strong>, uma das obras mais conhecidas de Aleijadinho. À noite, as ruas iluminadas rendem um passeio tranquilo e fotos lindas.<\/p>\n\n<h2>Dia 2: igrejas, ateliês e sabores<\/h2>\n\n<p>Visite a <strong>Matriz de Nossa Senhora do Pilar<\/strong>, famosa pelo interior coberto de ouro, e a <strong>Casa dos Contos<\/strong>. Reserve a tarde para os ateliês de pedra-sabão e para um café colonial demorado.<\/p>\n\n<h2>Dia 3: Mariana e a Mina da Passagem<\/h2>\n\n<p>A cidade vizinha de <strong>Mariana<\/strong> fica a poucos quilômetros e tem centro histórico charmoso e mais calmo. No caminho, a <strong>Mina da Passagem<\/strong> permite descer a uma antiga mina de ouro — uma experiência marcante para adultos e crianças.<\/p>\n\n<h2>O que provar<\/h2>\n\n<ul><li>Pão de queijo quentinho e café passado na hora.<\/li><li>Feijão tropeiro, tutu de feijão e frango com quiabo.<\/li><li>Doce de leite, goiabada cascão e queijo minas.<\/li><\/ul>\n\n<blockquote>Dica: muitos restaurantes de comida típica servem no fogão a lenha. Pergunte aos moradores quais são os preferidos deles — costumam ser os mais saborosos e com preço justo.<\/blockquote>\n\n<h2>Dicas práticas<\/h2>\n\n<ul><li>Igrejas e museus têm horários próprios e alguns cobram entrada: confira antes de sair.<\/li><li>As noites podem ser frias, principalmente no inverno. Leve um agasalho.<\/li><li>Em datas como o Carnaval e a Semana Santa, a cidade fica cheia: reserve a hospedagem com antecedência.<\/li><\/ul>\n\n<h2>Conclusão<\/h2>\n\n<p>Ouro Preto é história viva servida com comida de vó. Gostou do estilo? Veja mais roteiros em <a href=\"/search/label/Cidades%20e%20cultura\">Cidades e cultura<\/a> no blog da Rota Tour.<\/p>"}, {"s": "arraial-do-cabo-caribe-brasileiro", "t": "Arraial do Cabo: como curtir o Caribe brasileiro sem fila e sem perrengue", "d": "2026-10-27", "l": ["Roteiros e destinos", "Praias e natureza", "Escapadas de fim de semana"], "c": "Roteiros e destinos", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-arraial.jpg", "a": "Praia de águas turquesa e areia branca em Arraial do Cabo", "p": "Arraial do Cabo (RJ)", "e": "Quem vê a água turquesa de Arraial do Cabo jura que é o Caribe — mas ela fica bem aqui, no litoral do Rio de Janeiro. É o destino perfeito para desacelerar, nadar…", "h": "<p>Quem vê a água turquesa de Arraial do Cabo jura que é o Caribe — mas ela fica bem aqui, no litoral do Rio de Janeiro. É o destino perfeito para desacelerar, nadar em águas claras e contemplar paisagens que parecem pintura. O segredo para aproveitar de verdade está nos horários e nas escolhas certas.<\/p>\n\n<h2>Por que a água é tão clara (e tão gelada)<\/h2>\n\n<p>Arraial fica numa ponta de terra da Região dos Lagos onde acontece a <strong>ressurgência<\/strong>: águas profundas e frias sobem à superfície, trazendo nutrientes e deixando o mar cristalino. Por isso a vida marinha é rica e a água costuma ser bem mais fria do que no restante do litoral. Leve uma roupa de neoprene se pretende mergulhar por muito tempo.<\/p>\n\n<h2>As praias imperdíveis<\/h2>\n\n<ul><li><strong>Prainhas do Pontal do Atalaia:<\/strong> o cartão-postal da cidade, com a famosa escadaria de madeira descendo até o mar. Vá cedo — no fim da manhã o mirante e a areia ficam lotados.<\/li><li><strong>Praia do Forno:<\/strong> acesso por uma trilha curta a partir da Praia dos Anjos ou de barco. Água calma, ótima para nadar.<\/li><li><strong>Praia do Farol:<\/strong> considerada uma das mais bonitas do país, fica numa área protegida e só é visitada por passeios de barco autorizados, com tempo de permanência limitado.<\/li><li><strong>Praia Grande:<\/strong> extensa e com mar mais aberto, ideal para ver o pôr do sol.<\/li><\/ul>\n\n<h2>Passeio de barco: como fugir do tumulto<\/h2>\n\n<p>Os passeios saem da Praia dos Anjos e passam por pontos como a Gruta Azul, a Praia do Farol e a Prainha. Para uma experiência mais tranquila:<\/p>\n\n<ul><li>Prefira as saídas logo cedo, antes dos grupos maiores.<\/li><li>Pergunte se o barco tem som alto — há opções mais silenciosas, focadas na paisagem.<\/li><li>Confira se a empresa é credenciada e se o passeio inclui o desembarque na Praia do Farol.<\/li><\/ul>\n\n<h2>Roteiro para um fim de semana prolongado<\/h2>\n\n<ul><li><strong>Dia 1:<\/strong> chegada, fim de tarde na Praia Grande e jantar com frutos do mar no centro.<\/li><li><strong>Dia 2:<\/strong> Prainhas do Pontal do Atalaia bem cedo e passeio de barco à tarde.<\/li><li><strong>Dia 3:<\/strong> trilha até a Praia do Forno, almoço com peixe fresco e retorno.<\/li><\/ul>\n\n<h2>Como chegar<\/h2>\n\n<p>Arraial do Cabo fica a cerca de 160 km do Rio de Janeiro — de carro ou ônibus, a viagem leva por volta de 3 horas, dependendo do trânsito na saída da capital. Na cidade, dá para circular de táxi, aplicativo e, nas praias mais próximas, a pé.<\/p>\n\n<h2>Dicas práticas<\/h2>\n\n<ul><li>Evite feriados prolongados se quiser praias mais vazias.<\/li><li>Leve protetor solar, chapéu e garrafa de água: há pouca sombra nas prainhas.<\/li><li>Respeite as regras das áreas protegidas e leve seu lixo de volta.<\/li><\/ul>\n\n<h2>Conclusão<\/h2>\n\n<p>Com horários bem escolhidos, Arraial do Cabo entrega aquele mar de cinema sem estresse. Quer mais ideias de litoral? Veja os artigos de <a href=\"/search/label/Praias%20e%20natureza\">Praias e natureza<\/a> aqui no blog da Rota Tour.<\/p>"}, {"s": "como-planejar-sua-proxima-viagem-sem-estresse", "t": "Como planejar sua próxima viagem sem estresse", "d": "2026-10-20", "l": ["Dicas para viajar melhor", "Escapadas de fim de semana", "Viagens em família"], "c": "Dicas para viajar melhor", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-planejar-esqui.jpg", "a": "Duas pessoas esquiando em uma pista de neve", "p": "", "e": "Dicas práticas para organizar datas, transporte, hospedagem e orçamento.", "h": "<p>Toda viagem começa bem antes do embarque. Quando o planejamento é feito com calma, sobra mais tempo — e energia — para o que importa: aproveitar o destino. A boa notícia é que organizar uma viagem não precisa ser complicado. Basta seguir uma ordem simples.<\/p>\n\n<h2>Comece pelo “porquê”<\/h2>\n\n<p>Antes de abrir qualquer site de passagens, responda: o que você quer sentir nessa viagem? Descanso, aventura, cultura, tempo com a família? Essa resposta ajuda a escolher o destino, a duração e até o meio de transporte.<\/p>\n\n<h2>Defina datas com folga<\/h2>\n\n<ul><li>Verifique feriados, férias escolares e alta temporada do destino.<\/li><li>Se puder, prefira viajar fora dos picos: os preços costumam ser menores e os lugares, mais tranquilos.<\/li><li>Reserve um dia extra no retorno para descansar antes da rotina.<\/li><\/ul>\n\n<h2>Escolha o transporte certo<\/h2>\n\n<p>Para distâncias longas ou pouco tempo disponível, o <a href=\"/search?q=Viagem%20de%20avi%C3%A3o%3A%20o%20que%20voc%C3%AA%20precisa%20saber%20antes%20de%20embarcar\">avião<\/a> costuma ser a melhor opção. Para trajetos regionais, o <a href=\"/search?q=Viajar%20de%20%C3%B4nibus%20tamb%C3%A9m%20pode%20ser%20uma%20experi%C3%AAncia%20incr%C3%ADvel\">ônibus<\/a> oferece conforto, economia e a chance de ver a paisagem mudar pela janela.<\/p>\n\n<h2>Monte um orçamento realista<\/h2>\n\n<p>Some transporte, hospedagem, alimentação, passeios e deslocamentos locais. Depois, acrescente uma margem de 10% a 15% para imprevistos. Ter esse colchão evita sustos e deixa a viagem mais leve.<\/p>\n\n<h2>Dicas práticas<\/h2>\n\n<ul><li>Guarde todas as reservas em uma única pasta, física ou digital.<\/li><li>Compartilhe o roteiro com alguém de confiança.<\/li><li>Confira documentos e validade com antecedência.<\/li><li>Deixe espaço livre no roteiro: os melhores momentos às vezes não estão planejados.<\/li><\/ul>\n\n<blockquote>Planejar não é engessar a viagem — é abrir espaço para aproveitar cada momento com tranquilidade.<\/blockquote>\n\n<h2>Conclusão<\/h2>\n\n<p>Com objetivo claro, datas bem escolhidas e um orçamento realista, metade da viagem já está pronta. O próximo passo é <a href=\"/search?q=Como%20montar%20um%20roteiro%20de%20viagem%20perfeito\">montar o roteiro<\/a> — e a Rota Tour está aqui para ajudar em cada etapa.<\/p>"}, {"s": "viagem-de-aviao-o-que-voce-precisa-saber-antes-de-embarcar", "t": "Viagem de avião: o que você precisa saber antes de embarcar", "d": "2026-10-14", "l": ["Viagens de avião", "Cidades e cultura"], "c": "Viagens de avião", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-aviao.jpg", "a": "Pessoa com mala no saguão do aeroporto, com um avião decolando ao fundo", "p": "", "e": "Um guia para se preparar para o embarque com mais tranquilidade.", "h": "<p>Voar é uma das formas mais rápidas de chegar ao destino — e, com um pouco de preparo, também uma das mais tranquilas. Reunimos o essencial para você embarcar sem correria.<\/p>\n\n<h2>Antes de sair de casa<\/h2>\n\n<ul><li><strong>Documentos:<\/strong> confira se o documento com foto está válido e legível. Para viagens internacionais, verifique passaporte, vistos e exigências do país de destino.<\/li><li><strong>Check-in online:<\/strong> a maioria das companhias permite fazê-lo pelo site ou aplicativo com antecedência. Confira o prazo da sua.<\/li><li><strong>Bagagem:<\/strong> consulte as regras de peso e tamanho da sua tarifa. Pesar a mala em casa evita surpresas no balcão.<\/li><\/ul>\n\n<h2>Bagagem de mão sem dor de cabeça<\/h2>\n\n<p>Leve na bagagem de mão tudo o que você não pode perder: documentos, remédios de uso contínuo, carregadores e uma muda de roupa. Em voos internacionais, líquidos costumam ser limitados a frascos pequenos, reunidos em uma embalagem transparente — confirme as regras da companhia e do aeroporto.<\/p>\n\n<h2>No aeroporto<\/h2>\n\n<p>Uma recomendação comum é chegar com cerca de duas horas de antecedência em voos nacionais e três em internacionais. Assim, filas e imprevistos não viram motivo de ansiedade.<\/p>\n\n<h2>Dicas para um voo confortável<\/h2>\n\n<ul><li>Use roupas leves e em camadas: a temperatura a bordo varia.<\/li><li>Beba água ao longo do voo.<\/li><li>Em voos longos, levante-se e caminhe um pouco sempre que for seguro.<\/li><li>Tenha à mão um fone, um livro ou uma playlist baixada.<\/li><\/ul>\n\n<h2>Conclusão<\/h2>\n\n<p>Com documentos em ordem, mala dentro das regras e um pouco de antecedência, o voo vira parte boa da viagem. Quer completar a preparação? Veja <a href=\"/search?q=O%20que%20levar%20na%20mala%20para%20viajar%20com%20tranquilidade\">o que levar na mala<\/a>.<\/p>"}, {"s": "viajar-de-onibus-tambem-pode-ser-uma-experiencia-incrivel", "t": "Viajar de ônibus também pode ser uma experiência incrível", "d": "2026-10-07", "l": ["Viagens de ônibus", "Escapadas de fim de semana", "Praias e natureza", "Viagens em família"], "c": "Viagens de ônibus", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-onibus.jpg", "a": "Ônibus de turismo em estrada litorânea com mar e montanhas ao fundo", "p": "", "e": "Descubra como aproveitar o caminho com conforto e praticidade.", "h": "<p>Na viagem de ônibus, o caminho também faz parte do passeio. Serras, litoral e pequenas cidades passam pela janela, e você chega ao destino já no clima da viagem. Com algumas escolhas simples, o trajeto fica ainda mais confortável.<\/p>\n\n<h2>Escolha o tipo de poltrona<\/h2>\n\n<p>Muitas empresas oferecem categorias diferentes, do assento convencional ao leito, com mais reclinação e espaço para as pernas. Em trajetos noturnos ou longos, vale comparar: o conforto extra pode fazer diferença na chegada.<\/p>\n\n<h2>Prefira o lugar certo<\/h2>\n\n<ul><li><strong>Janela:<\/strong> para quem quer apreciar a paisagem.<\/li><li><strong>Corredor:<\/strong> para quem prefere se levantar com mais liberdade.<\/li><li><strong>Meio do ônibus:<\/strong> costuma balançar menos para quem é sensível ao movimento.<\/li><\/ul>\n\n<h2>Monte um kit de bordo<\/h2>\n\n<p>Um travesseiro de pescoço, uma manta leve, garrafa de água, lanches práticos e fones de ouvido transformam horas de estrada em descanso. Não esqueça o carregador — e confira se o veículo tem tomadas ou USB.<\/p>\n\n<h2>Aproveite as paradas<\/h2>\n\n<p>As paradas são uma boa hora para esticar as pernas, se hidratar e conhecer sabores regionais. Fique atento ao tempo informado pelo motorista e leve sempre seus objetos de valor com você.<\/p>\n\n<h2>Dicas práticas<\/h2>\n\n<ul><li>Chegue à rodoviária com antecedência para despachar a bagagem com calma.<\/li><li>Identifique a mala com nome e contato.<\/li><li>Guarde documentos e passagem em um bolso de fácil acesso.<\/li><\/ul>\n\n<h2>Conclusão<\/h2>\n\n<p>Viajar de ônibus é econômico, prático e cheio de paisagens. Que tal usar a estrada para uma <a href=\"/search/label/Escapadas%20de%20fim%20de%20semana\">escapada de fim de semana<\/a>? Explore outros roteiros no blog da Rota Tour.<\/p>"}, {"s": "como-montar-um-roteiro-de-viagem-perfeito", "t": "Como montar um roteiro de viagem perfeito", "d": "2026-09-30", "l": ["Roteiros e destinos", "Cidades e cultura", "Viagens em família"], "c": "Roteiros e destinos", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-roteiro-paris.jpg", "a": "Torre Eiffel em Paris sob um céu azul", "p": "", "e": "Organize seus passeios e aproveite cada momento do destino.", "h": "<p>Um bom roteiro é como um mapa bem dobrado: mostra o caminho sem esconder as surpresas. O segredo está em equilibrar o que você quer ver com o tempo que realmente tem.<\/p>\n\n<h2>1. Liste os desejos<\/h2>\n\n<p>Anote tudo o que chama sua atenção no destino: atrações, bairros, restaurantes, experiências. Depois, marque três ou quatro itens imperdíveis. Eles serão a espinha dorsal do roteiro.<\/p>\n\n<h2>2. Agrupe por região<\/h2>\n\n<p>Coloque os pontos no mapa e organize os dias por bairro ou região. Assim você gasta menos tempo em deslocamentos e mais tempo aproveitando.<\/p>\n\n<h2>3. Respeite o ritmo<\/h2>\n\n<ul><li>Planeje no máximo dois ou três passeios principais por dia.<\/li><li>Intercale atividades intensas com momentos tranquilos.<\/li><li>Viajando com crianças ou idosos, inclua pausas maiores.<\/li><\/ul>\n\n<h2>4. Confira horários e reservas<\/h2>\n\n<p>Museus, parques e passeios guiados podem ter dias de fechamento, horários reduzidos ou exigir reserva. Verifique antes e anote no roteiro.<\/p>\n\n<h2>5. Deixe espaço para o acaso<\/h2>\n\n<p>Reserve meio dia livre a cada três dias. É nele que cabem a cafeteria descoberta por acaso, o pôr do sol que pede mais tempo ou o descanso que o corpo pede.<\/p>\n\n<h2>Dicas práticas<\/h2>\n\n<ul><li>Salve mapas offline do destino.<\/li><li>Tenha um plano B para dias de chuva.<\/li><li>Revise o roteiro na noite anterior de cada dia.<\/li><\/ul>\n\n<h2>Conclusão<\/h2>\n\n<p>Um roteiro bem montado traz segurança sem tirar a liberdade. Comece pelo <a href=\"/search?q=Como%20planejar%20sua%20pr%C3%B3xima%20viagem%20sem%20estresse\">planejamento da viagem<\/a> e explore mais ideias em <a href=\"/search/label/Roteiros%20e%20destinos\">Roteiros e destinos<\/a>.<\/p>"}, {"s": "destinos-para-descansar-e-renovar-as-energias", "t": "Destinos para descansar e renovar as energias", "d": "2026-09-23", "l": ["Roteiros e destinos", "Destinos para descansar", "Praias e natureza"], "c": "Roteiros e destinos", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-descansar-praia.jpg", "a": "Igreja branca à beira-mar entre coqueiros", "p": "", "e": "Inspire-se com lugares que combinam natureza, tranquilidade e belas paisagens.", "h": "<p>Às vezes, a melhor viagem é aquela em que o relógio importa pouco. Separamos alguns estilos de destino — e exemplos para inspirar — para quem quer desacelerar.<\/p>\n\n<h2>Serras e montanhas<\/h2>\n\n<p>Clima ameno, trilhas leves e noites tranquilas. Regiões como a Serra Gaúcha e a Serra da Mantiqueira combinam boa gastronomia com paisagens verdes e ritmo calmo.<\/p>\n\n<h2>Águas cristalinas<\/h2>\n\n<p>Destinos como Bonito, no Mato Grosso do Sul, convidam a flutuar em rios transparentes e a passar o dia em contato com a natureza, com passeios organizados e visitação controlada.<\/p>\n\n<h2>Praias tranquilas<\/h2>\n\n<p>Vilarejos litorâneos fora da alta temporada são ótimos para descansar: menos movimento, mais silêncio e o som do mar como trilha sonora.<\/p>\n\n<h2>Paisagens que impressionam<\/h2>\n\n<p>Para quem busca algo fora do comum, a Chapada Diamantina, na Bahia, e os Lençóis Maranhenses reúnem cachoeiras, dunas e lagoas que parecem de outro mundo. Pesquise a melhor época de visita antes de planejar.<\/p>\n\n<h2>Dicas para descansar de verdade<\/h2>\n\n<ul><li>Escolha hospedagens com áreas de lazer ao ar livre.<\/li><li>Planeje poucos deslocamentos durante a estadia.<\/li><li>Combine com você mesmo um “horário sem tela”.<\/li><li>Prefira viajar fora de feriados prolongados.<\/li><\/ul>\n\n<blockquote>Descansar também é um destino: chegue sem pressa e permita-se não fazer nada.<\/blockquote>\n\n<h2>Conclusão<\/h2>\n\n<p>Natureza, silêncio e tempo livre são os ingredientes de uma viagem restauradora. Veja mais ideias em <a href=\"/search/label/Destinos%20para%20descansar\">Destinos para descansar<\/a> e comece a planejar a sua pausa.<\/p>"}, {"s": "o-que-levar-na-mala-para-viajar-com-tranquilidade", "t": "O que levar na mala para viajar com tranquilidade", "d": "2026-09-16", "l": ["Dicas para viajar melhor", "Viagens em família", "Praias e natureza"], "c": "Dicas para viajar melhor", "i": "https://cdn.jsdelivr.net/gh/lkastact/blog@main/public/imagens/artigo-mala.jpg", "a": "Pessoa arrumando uma mala aberta com roupas, chapéu e óculos de sol", "p": "", "e": "Uma lista prática para não esquecer os itens essenciais.", "h": "<p>Fazer a mala pode ser simples quando existe uma lista. Use este checklist como ponto de partida e adapte ao clima, à duração e ao estilo da sua viagem.<\/p>\n\n<h2>Documentos e dinheiro<\/h2>\n\n<ul><li>Documento de identidade com foto (e passaporte, se for o caso).<\/li><li>Cartões e um pouco de dinheiro em espécie.<\/li><li>Reservas e passagens salvas no celular e, se possível, impressas.<\/li><\/ul>\n\n<h2>Saúde e cuidados<\/h2>\n\n<ul><li>Remédios de uso contínuo, com a receita.<\/li><li>Protetor solar, repelente e um kit básico de primeiros socorros.<\/li><li>Itens de higiene em tamanhos de viagem.<\/li><\/ul>\n\n<h2>Roupas<\/h2>\n\n<p>Monte combinações em vez de peças isoladas. Prefira cores que conversam entre si, tecidos que secam rápido e um agasalho leve, mesmo para destinos quentes.<\/p>\n\n<h2>Eletrônicos<\/h2>\n\n<ul><li>Celular e carregador.<\/li><li>Bateria portátil.<\/li><li>Adaptador de tomada, se o destino usar outro padrão.<\/li><\/ul>\n\n<h2>Dicas práticas<\/h2>\n\n<ul><li>Faça a mala um ou dois dias antes, sem pressa.<\/li><li>Enrole as roupas para ganhar espaço.<\/li><li>Deixe um espaço livre para as lembranças da viagem.<\/li><li>Coloque na bagagem de mão o que você não pode perder.<\/li><\/ul>\n\n<h2>Conclusão<\/h2>\n\n<p>Com uma lista simples, a mala deixa de ser fonte de ansiedade. Vai voar? Confira também <a href=\"/search?q=Viagem%20de%20avi%C3%A3o%3A%20o%20que%20voc%C3%AA%20precisa%20saber%20antes%20de%20embarcar\">o que saber antes de embarcar<\/a>.<\/p>"}];
+  function norm(s){return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();}
+  function embItem(p){return {title:p.t,url:'/?artigo='+p.s,img:p.i,alt:p.a||p.t,place:p.p||p.t,cat:p.c,excerpt:p.e,date:p.d+'T12:00:00',labels:p.l,text:p.t+' '+p.e+' '+p.l.join(' ')+' '+txt(p.h)};}
+  function feedItem(e){var h=body(e);return {title:e.title.$t,url:alt(e),img:firstImg(e),alt:e.title.$t,place:e.title.$t,cat:cat(e),excerpt:txt(h).slice(0,160),date:pdate(e),labels:labels(e)};}
+  function cover(it,cls){var c=el('div',cls);c.appendChild(el('span','rt-ph-pin','●'));c.appendChild(el('span','rt-ph-place',it.place));c.appendChild(el('span','rt-ph-brand','Rota Tour'));return c;}
+  function card(it){
+    var art=el('article');art.style.display='flex';
+    var a=el('a','rt-art');a.href=it.url;a.style.flex='1';
+    var media=el('div','rt-art-media');
+    if(it.img){var i=el('img');i.src=it.img;i.alt=it.alt;i.loading='lazy';i.onerror=function(){media.innerHTML='';media.appendChild(cover(it,'rt-ph'));};media.appendChild(i);}else{media.appendChild(cover(it,'rt-ph'));}
+    var b=el('div','rt-art-body');
+    b.appendChild(el('p','rt-eyebrow',it.cat));b.appendChild(el('h3','',it.title));
+    b.appendChild(el('p','rt-art-excerpt',it.excerpt));b.appendChild(el('p','rt-meta',fmt(it.date)));
+    a.appendChild(media);a.appendChild(b);art.appendChild(a);return art;
+  }
+  var artigo=qs.get('artigo');
+  if(artigo){
+    var P=EMB.filter(function(x){return x.s===artigo;})[0], main=document.getElementById('conteudo');
+    if(P&&main){
+      var it=embItem(P);
+      for(var ci=0;ci<main.children.length;ci++)main.children[ci].hidden=true;
+      var wrap=el('article','rt-article'),ct=el('div','rt-container'),hd=el('header','rt-article-head');
+      var back=el('a','rt-back','← Todos os artigos');back.href='/#artigos';hd.appendChild(back);
+      var ce=el('a','rt-eyebrow',it.cat);ce.href='/search/label/'+encodeURIComponent(it.cat);ce.style.textDecoration='none';var cp=el('p');cp.appendChild(ce);hd.appendChild(cp);
+      hd.appendChild(el('h1','',it.title));var mt=el('p','rt-meta',fmt(it.date));mt.style.paddingTop='0';hd.appendChild(mt);ct.appendChild(hd);
+      var cv=el('figure','rt-article-cover');
+      if(it.img){var ci2=el('img');ci2.src=it.img;ci2.alt=it.alt;ci2.onerror=function(){cv.innerHTML='';cv.appendChild(cover(it,'rt-ph rt-ph-lg'));};cv.appendChild(ci2);}else{cv.appendChild(cover(it,'rt-ph rt-ph-lg'));}
+      ct.appendChild(cv);
+      var pr=el('div','rt-prose');pr.innerHTML=P.h;ct.appendChild(pr);
+      var foot=el('div','rt-article-foot'),lb=el('div','rt-labels');
+      it.labels.forEach(function(t){var ch=el('a','rt-chip',t);ch.href='/search/label/'+encodeURIComponent(t);lb.appendChild(ch);});
+      foot.appendChild(lb);var more=el('a','rt-btn rt-btn-ghost','Ver mais artigos');more.href='/#artigos';foot.appendChild(more);ct.appendChild(foot);
+      wrap.appendChild(ct);main.appendChild(wrap);document.title=it.title+' — Rota Tour';window.scrollTo(0,0);
+      var md=document.querySelector('meta[name="description"]');if(md)md.setAttribute('content',it.excerpt);
+    }
+  }
+  if(gF && !artigo){
+    var label=(path.match(/^\/search\/label\/([^\/]+)/)||[])[1]||'', q=qs.get('q')||'';
+    var nq=norm(q).trim().split(/\s+/).filter(Boolean);
+    var emb=EMB.map(embItem).filter(function(it){
+      if(label&&it.labels.indexOf(label)<0)return false;
+      var h=norm(it.text);return nq.every(function(w){return h.indexOf(w)>=0;});
+    });
+    var render=function(items){
+      var seen={},out=[];
+      items.forEach(function(it){var k=norm(it.title);if(!seen[k]){seen[k]=1;out.push(it);}});
+      out.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+      if(!out.length){if(em)em.hidden=false;return;}
+      if(gB)gB.hidden=true;
+      out.forEach(function(it){gF.appendChild(card(it));});
+    };
+    var url='/feeds/posts/default'+(label?'/-/'+encodeURIComponent(label):'')+'?alt=json&max-results=24'+(q?'&q='+encodeURIComponent(q):'');
+    getJSON(url).then(function(data){
+      var es=(data.feed&&data.feed.entry)||[];
+      var embTitles={};EMB.forEach(function(x){embTitles[norm(x.t)]=1;});
+      render(emb.concat(es.map(feedItem).filter(function(it){return !embTitles[norm(it.title)];})));
+    }).catch(function(){render(emb);});
+  }
+  var single=document.getElementById('rt-single-feed');
+  if(single && (isPost||isPage)){
+    var post=document.getElementById('rt-post');
+    getJSON((isPage?'/feeds/pages/default':'/feeds/posts/default')+'?alt=json&max-results=150').then(function(data){
+      var e=((data.feed&&data.feed.entry)||[]).filter(function(x){return samePath(alt(x));})[0];
+      if(!e)return;
+      if(post){
+        var c=post.querySelector('.rt-post-cat'), m=post.querySelector('.rt-post-meta');
+        if(c)c.textContent=cat(e); if(m)m.textContent=fmt(pdate(e)); return;
+      }
+      var wrap=el('article','rt-article'), ct=el('div','rt-container');
+      if(isPage){
+        var d=el('div','rt-doc');d.appendChild(el('p','rt-eyebrow','Institucional'));d.appendChild(el('h1','',e.title.$t));
+        var pr=el('div','rt-prose');pr.style.marginTop='0';pr.innerHTML=body(e);d.appendChild(pr);ct.appendChild(d);
+      }else{
+        var h=el('header','rt-article-head');
+        var back=el('a','rt-back','← Todos os artigos');back.href='/#artigos';h.appendChild(back);
+        h.appendChild(el('p','rt-eyebrow',cat(e)));h.appendChild(el('h1','',e.title.$t));
+        var mt=el('p','rt-meta',fmt(pdate(e)));mt.style.paddingTop='0';h.appendChild(mt);ct.appendChild(h);
+        var pr2=el('div','rt-prose');pr2.innerHTML=body(e);ct.appendChild(pr2);
+        var ls=labels(e);
+        if(ls.length){var foot=el('div','rt-article-foot'),lb=el('div','rt-labels');
+          ls.forEach(function(t){var ch=el('a','rt-chip',t);ch.href='/search/label/'+encodeURIComponent(t);lb.appendChild(ch);});
+          foot.appendChild(lb);var more=el('a','rt-btn rt-btn-ghost','Ver mais artigos');more.href='/#artigos';foot.appendChild(more);ct.appendChild(foot);}
+      }
+      wrap.appendChild(ct);single.appendChild(wrap);document.title=e.title.$t+' — Rota Tour';
+    }).catch(function(){});
+  }
+
+  (function(){
+    var seq='jonas', buf='', box=document.getElementById('rt-egg'), slot=document.getElementById('rt-egg-frame'), x=document.getElementById('rt-egg-close'), last=null;
+    if(!box||!slot)return;
+    function open(){last=document.activeElement;slot.innerHTML='';var f=document.createElement('iframe');
+      f.src='https://archive.org/embed/DoomsharewareEpisode';f.title='DOOM';f.allow='fullscreen; autoplay';f.setAttribute('allowfullscreen','');
+      slot.appendChild(f);box.hidden=false;document.body.style.overflow='hidden';fit();if(x)x.focus();}
+    function fit(){var f=slot.querySelector('iframe');if(f)f.style.transform='scale('+(slot.clientWidth/640)+')';}
+    window.addEventListener('resize',fit);
+    function close(){box.hidden=true;slot.innerHTML='';document.body.style.overflow='';if(last&&last.focus)last.focus();}
+    document.addEventListener('keydown',function(e){
+      if(!box.hidden){if(e.key==='Escape')close();return;}
+      var t=e.target,tag=(t&&t.tagName)||'';
+      if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||(t&&t.isContentEditable))return;
+      if(e.ctrlKey||e.metaKey||e.altKey||!e.key||e.key.length!==1){return;}
+      buf=(buf+e.key.toLowerCase()).slice(-seq.length);
+      if(buf===seq){buf='';open();}
+    });
+    if(x)x.addEventListener('click',close);
+    box.addEventListener('click',function(e){if(e.target===box)close();});
+  })();
+  var f=document.getElementById('rt-news-form');
+  if(f){
+    var i=document.getElementById('rt-news-email'), er=document.getElementById('rt-news-erro'), ok=document.getElementById('rt-news-ok');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var v=(i.value||'').trim(), msg='';
+      if(!v) msg='Informe seu e-mail para receber as novidades.';
+      else if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) msg='Esse e-mail parece incompleto. Confira e tente de novo.';
+      if(msg){er.textContent=msg;er.hidden=false;i.setAttribute('aria-invalid','true');i.focus();return;}
+      er.hidden=true;i.setAttribute('aria-invalid','false');f.hidden=true;ok.hidden=false;
+    });
+    i.addEventListener('input',function(){if(!er.hidden){er.hidden=true;i.setAttribute('aria-invalid','false');}});
+  }
+})();
+//]]>
+</script>
+</body>
+</html>
